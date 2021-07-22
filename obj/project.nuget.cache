@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "p+z7lg+Cyjm8B+pRac0UYkkf9MAj94vJUFVpuzeNikUWfaUDC30ZVgg1jsCdjlGV9l0BWEC0llCEbHW8wPjL/Q==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Finn\\OneDrive\\Mythkeeper\\Mythkeeper.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Finn\\.nuget\\packages\\monogame.content.builder.task\\3.8.0.1641\\monogame.content.builder.task.3.8.0.1641.nupkg.sha512",
+    "C:\\Users\\Finn\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.0.1641\\monogame.framework.desktopgl.3.8.0.1641.nupkg.sha512"
+  ],
+  "logs": []
+}
