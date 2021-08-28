@@ -3,6 +3,9 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
+using Microsoft.Xna.Framework.Input.Touch;
+using Microsoft.Xna.Framework.Content;
 
 namespace Mythkeeper {
     class Player {
@@ -11,7 +14,7 @@ namespace Mythkeeper {
         ///</summary>
 
         // Animations
-        private Animation idleAnim1;
+        private AnimatedSprite idleAnim1;
         private Animation idleAnim2;
         private Animation drawSwordAnim;
         private Animation sheatheSwordAnim;
@@ -44,10 +47,12 @@ namespace Mythkeeper {
 
         // Sounds
 
+        // Private variables
 
 
+        public void LoadContent() {
 
-
+        }
 
 
 

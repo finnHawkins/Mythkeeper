@@ -1,11 +1,17 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using System.IO;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
+using Microsoft.Xna.Framework.Input.Touch;
+using Microsoft.Xna.Framework.Content;
 
 namespace Mythkeeper {
     public class MKGame : Game {
         private GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;
+        private SpriteBatch spriteBatch;
+        private AnimatedSprite playerAnim;
 
         public MKGame() {
             _graphics = new GraphicsDeviceManager(this);
@@ -20,7 +26,9 @@ namespace Mythkeeper {
         }
 
         protected override void LoadContent() {
-            _spriteBatch = new SpriteBatch(GraphicsDevice);
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+            Texture2D texture = Content.Load<Texture2D>("spr_pIdle1_4");
+            playerAnim = new AnimatedSprite(texture, 1, 4, 4);
 
             // TODO: use this.Content to load your game content here
         }
@@ -31,6 +39,8 @@ namespace Mythkeeper {
 
             // TODO: Add your update logic here
 
+            playerAnim.Update(gameTime);
+
             base.Update(gameTime);
         }
 
@@ -38,6 +48,8 @@ namespace Mythkeeper {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+
+            playerAnim.Draw(spriteBatch, new Vector2(400, 200));
 
             base.Draw(gameTime);
         }

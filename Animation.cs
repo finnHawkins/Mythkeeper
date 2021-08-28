@@ -50,15 +50,16 @@ namespace Mythkeeper {
         /// </summary>
         public int FrameCount {
             // Assume square frames.
-            get { return Texture.Width / FrameHeight; }
+            get { return frameCount; }
         }
+        int frameCount;
 
         /// <summary>
         /// Gets the width of a frame in the animation.
         /// </summary>
         public int FrameWidth {
             // Assume square frames.
-            get { return Texture.Height; }
+            get { return Texture.Width / frameCount; }
         }
 
         /// <summary>
@@ -71,10 +72,11 @@ namespace Mythkeeper {
         /// <summary>
         /// Constructors a new animation.
         /// </summary>        
-        public Animation(Texture2D texture, float frameTime, bool isLooping) {
+        public Animation(Texture2D texture, float frameTime, bool isLooping, int frameCount) {
             this.texture = texture;
             this.frameTime = frameTime;
             this.isLooping = isLooping;
+            this.frameCount = frameCount;
         }
     }
 }
