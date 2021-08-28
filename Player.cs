@@ -69,14 +69,11 @@ namespace Mythkeeper {
             Texture2D texture = content.Load<Texture2D>("spr_pIdle1_4");
             idleAnim1 = new AnimatedSprite(texture, 1, 4, 4);
 
-            Console.WriteLine("loading player content");
-
         }
 
         public void Draw() {
 
             idleAnim1.Draw(spriteBatch, new Vector2(400, 200));
-            Console.WriteLine("drawing player");
 
         }
 
