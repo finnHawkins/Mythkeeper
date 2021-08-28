@@ -1,0 +1,3 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/Finn/OneDrive/Mythkeeper/Content/entities/spr_pIdle1_4.png","C:/Users/Finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/entities/spr_pIdle1_4.xnb","TextureProcessor","Texture2DContent",1736,10165,0.3161798
+"C:/Users/Finn/OneDrive/Mythkeeper/Content/rooms/mansion.jpg","C:/Users/Finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/rooms/mansion.xnb","TextureProcessor","Texture2DContent",189619,5760085,0.1742479

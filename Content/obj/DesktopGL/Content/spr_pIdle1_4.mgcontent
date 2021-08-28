@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>C:/Users/Finn/OneDrive/Mythkeeper/Content/spr_pIdle1_4.png</SourceFile>
-  <SourceTime>2021-07-22T14:50:11.9740076+01:00</SourceTime>
+  <SourceTime>2021-08-28T15:21:31.1919397+01:00</SourceTime>
   <DestFile>C:/Users/Finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/Content/spr_pIdle1_4.xnb</DestFile>
-  <DestTime>2021-08-28T13:36:30.1072395+01:00</DestTime>
+  <DestTime>2021-08-28T15:21:32.1566576+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T17:17:54+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

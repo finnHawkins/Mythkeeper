@@ -13,6 +13,10 @@ namespace Mythkeeper {
         /// The player character controller
         ///</summary>
 
+        private ContentManager content;
+        private SpriteBatch spriteBatch;
+        private GraphicsDevice graphicDevice;
+
         // Animations
         private AnimatedSprite idleAnim1;
         private Animation idleAnim2;
@@ -50,7 +54,35 @@ namespace Mythkeeper {
         // Private variables
 
 
+        public Player(GraphicsDevice gd) {
+
+            content = MKGame.GetNewContentManagerInstance();
+            graphicDevice = gd;
+            Console.WriteLine("player class initialised");
+
+        }
+
         public void LoadContent() {
+
+            spriteBatch = new SpriteBatch(graphicDevice);
+
+            Texture2D texture = content.Load<Texture2D>("spr_pIdle1_4");
+            idleAnim1 = new AnimatedSprite(texture, 1, 4, 4);
+
+            Console.WriteLine("loading player content");
+
+        }
+
+        public void Draw() {
+
+            idleAnim1.Draw(spriteBatch, new Vector2(400, 200));
+            Console.WriteLine("drawing player");
+
+        }
+
+        public void Update(GameTime gameTime) {
+
+            idleAnim1.Update(gameTime);
 
         }
 

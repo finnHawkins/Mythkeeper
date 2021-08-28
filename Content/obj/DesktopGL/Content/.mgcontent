@@ -4,9 +4,11 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Finn/OneDrive/Mythkeeper/Content/spr_pIdle1_4.png</File>
+    <File>C:/Users/Finn/OneDrive/Mythkeeper/Content/entities/spr_pIdle1_4.png</File>
+    <File>C:/Users/Finn/OneDrive/Mythkeeper/Content/rooms/mansion.jpg</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>

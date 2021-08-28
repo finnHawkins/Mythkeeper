@@ -45,3 +45,5 @@ C:\Users\Finn\OneDrive\Mythkeeper\obj\Debug\netcoreapp3.1\Mythkeeper.dll
 C:\Users\Finn\OneDrive\Mythkeeper\obj\Debug\netcoreapp3.1\Mythkeeper.pdb
 C:\Users\Finn\OneDrive\Mythkeeper\obj\Debug\netcoreapp3.1\Mythkeeper.genruntimeconfig.cache
 C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\Content\spr_pIdle1_4.xnb
+C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\Content\entities\spr_pIdle1_4.xnb
+C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\Content\rooms\mansion.xnb
