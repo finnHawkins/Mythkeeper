@@ -19,7 +19,7 @@ namespace Mythkeeper {
 
         // Animations
         private AnimatedSprite idleAnim1;
-        private Animation idleAnim2;
+        private AnimatedSprite idleAnim2;
         private Animation drawSwordAnim;
         private Animation sheatheSwordAnim;
         private Animation deathAnim;
@@ -52,7 +52,8 @@ namespace Mythkeeper {
         // Sounds
 
         // Private variables
-
+        private Boolean swordSheathed;
+        private AnimatedSprite currentAnimation;
 
         public Player(GraphicsDevice gd) {
 
@@ -60,26 +61,36 @@ namespace Mythkeeper {
             graphicDevice = gd;
             Console.WriteLine("player class initialised");
 
+            swordSheathed = false;
+
         }
 
         public void LoadContent() {
 
             spriteBatch = new SpriteBatch(graphicDevice);
 
-            Texture2D texture = content.Load<Texture2D>("spr_pIdle1_4");
-            idleAnim1 = new AnimatedSprite(texture, 1, 4, 4);
+            Texture2D idle1 = content.Load<Texture2D>("entities\\player\\spr_pIdle1_4");
+            idleAnim1 = new AnimatedSprite(idle1, 1, 4, 4);
+            Texture2D idle2 = content.Load<Texture2D>("entities\\player\\spr_pIdle2_4");
+            idleAnim2 = new AnimatedSprite(idle2, 1, 4, 4);
 
         }
 
         public void Draw() {
 
-            idleAnim1.Draw(spriteBatch, new Vector2(400, 200));
+            currentAnimation.Draw(spriteBatch, new Vector2(400, 200));
 
         }
 
         public void Update(GameTime gameTime) {
 
-            idleAnim1.Update(gameTime);
+            currentAnimation = swordSheathed ? idleAnim1 : idleAnim2;
+
+            if(Keyboard.GetState().IsKeyDown(Keys.Q)) {
+                swordSheathed = !swordSheathed;
+            }
+
+            currentAnimation.Update(gameTime);
 
         }
 

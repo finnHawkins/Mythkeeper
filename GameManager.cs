@@ -4,5 +4,13 @@ using System.Text;
 
 namespace Mythkeeper {
     class GameManager {
+
+        private int gameMode;
+        private int difficulty;
+
+
+        public GameManager() {
+        }
+
     }
 }
