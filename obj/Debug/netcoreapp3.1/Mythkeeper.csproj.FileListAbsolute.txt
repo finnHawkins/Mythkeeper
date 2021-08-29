@@ -49,3 +49,5 @@ C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\Content\entities\spr_p
 C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\Content\rooms\mansion.xnb
 C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\Content\entities\player\spr_pIdle1_4.xnb
 C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\Content\entities\player\spr_pIdle2_4.xnb
+C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\Content\entities\player\spr_pSheathe_4.xnb
+C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\Content\entities\player\spr_pUnsheathe_3.xnb

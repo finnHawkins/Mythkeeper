@@ -9,6 +9,7 @@ namespace Mythkeeper {
         private int difficulty;
 
 
+
         public GameManager() {
         }
 

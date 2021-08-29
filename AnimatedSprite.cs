@@ -23,10 +23,11 @@ namespace Mythkeeper {
         public int cols { get; set; }
         private int currentFrame;
         private int frameCount;
-        private int fps;
+        public int fps;
         private int elapsedFrames;
+        public Boolean looping;
 
-        public AnimatedSprite(Texture2D spriteTexture, int spriteRows, int spriteCols, int FPS) {
+        public AnimatedSprite(Texture2D spriteTexture, int spriteRows, int spriteCols, int FPS, Boolean loop) {
 
             texture = spriteTexture;
             rows = spriteRows;
@@ -34,12 +35,13 @@ namespace Mythkeeper {
             currentFrame = 0;
             frameCount = rows * cols;
             fps = FPS;
+            looping = loop;
             
         }
 
-        public void Update(GameTime gametime) {
+        public void Update(GameTime gameTime) {
 
-            float frameRate = 1 / (float)gametime.ElapsedGameTime.TotalSeconds;
+            float frameRate = 1 / (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             elapsedFrames++;
 

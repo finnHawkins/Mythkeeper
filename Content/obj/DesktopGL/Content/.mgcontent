@@ -6,9 +6,13 @@
   <SourceFiles>
     <File>C:/Users/Finn/OneDrive/Mythkeeper/Content/entities/player/spr_pIdle1_4.png</File>
     <File>C:/Users/Finn/OneDrive/Mythkeeper/Content/entities/player/spr_pIdle2_4.png</File>
+    <File>C:/Users/Finn/OneDrive/Mythkeeper/Content/entities/player/spr_pSheathe_4.png</File>
+    <File>C:/Users/Finn/OneDrive/Mythkeeper/Content/entities/player/spr_pUnsheathe_3.png</File>
     <File>C:/Users/Finn/OneDrive/Mythkeeper/Content/rooms/mansion.jpg</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

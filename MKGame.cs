@@ -16,6 +16,7 @@ namespace Mythkeeper {
         private Rectangle mainScreen;
         public static ContentManager content;
         private Player player;
+        public float frameRate;
 
         public MKGame() {
             _graphics = new GraphicsDeviceManager(this);
@@ -57,6 +58,7 @@ namespace Mythkeeper {
 
             base.Update(gameTime);
             player.Update(gameTime);
+            frameRate = 1 / (float)gameTime.ElapsedGameTime.TotalSeconds;
         }
 
         protected override void Draw(GameTime gameTime) {
@@ -92,6 +94,11 @@ namespace Mythkeeper {
 
         }
 
+        public float getFrameRate() {
+
+            return frameRate;
+
+        }
 
     }
 }
