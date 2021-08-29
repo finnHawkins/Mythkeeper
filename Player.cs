@@ -26,7 +26,7 @@ namespace Mythkeeper {
 
         // Movement Animations
         private Animation climbAnim;
-        private Animation crouchAnim;
+        private AnimatedSprite crouchAnim;
         private Animation fallAnim;
         private Animation jumpAnim;
         private Animation rollAnim;
@@ -103,6 +103,8 @@ namespace Mythkeeper {
             drawSwordAnim = new AnimatedSprite(draw, 1, 3, 3, false);
             Texture2D sheathe = content.Load<Texture2D>("entities\\player\\spr_pSheathe_4");
             sheatheSwordAnim = new AnimatedSprite(sheathe, 1, 4, 4, false);
+            Texture2D crouch = content.Load<Texture2D>("entities\\player\\spr_pCrouch_4");
+            crouchAnim = new AnimatedSprite(crouch, 1, 4, 4, false);
 
             currentAnimation = idleAnimSS;
 
@@ -150,26 +152,64 @@ namespace Mythkeeper {
 
         public void checkKeypress() {
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Q)) {
+            if (!isCrouching) {
 
-                if (swordSheathed) {
+                if (Keyboard.GetState().IsKeyDown(Keys.Q)) {
 
-                    spriteBuffer.QueueAnim(drawSwordAnim);
-                    spriteBuffer.QueueAnim(idleAnimSU);
-                    swordSheathed = false;
+                    if (swordSheathed) {
 
-                } else {
+                        spriteBuffer.QueueAnim(drawSwordAnim);
+                        spriteBuffer.QueueAnim(idleAnimSU);
+                        swordSheathed = false;
 
-                    spriteBuffer.QueueAnim(sheatheSwordAnim);
-                    spriteBuffer.QueueAnim(idleAnimSS);
-                    swordSheathed = true;
+                    } else {
+
+                        spriteBuffer.QueueAnim(sheatheSwordAnim);
+                        spriteBuffer.QueueAnim(idleAnimSS);
+                        swordSheathed = true;
+                    }
+
                 }
-
             }
 
             if (Keyboard.GetState().IsKeyDown(Keys.LeftControl)) {
 
-                if (isMoving) { isSliding = true; } else { isCrouching = true; }
+                if (isMoving) {
+                    isSliding = true;
+                } else {
+
+                    if (isCrouching) {
+
+                        if(swordSheathed) {
+
+                            currentAnimation = idleAnimSS;
+
+                        } else {
+
+                            spriteBuffer.QueueAnim(idleAnimSS);
+                            spriteBuffer.QueueAnim(drawSwordAnim);
+                            spriteBuffer.QueueAnim(idleAnimSU);
+
+                        }
+
+
+                    } else {
+
+                        if (swordSheathed) {
+
+                            currentAnimation = crouchAnim;
+
+                        } else {
+
+                            spriteBuffer.QueueAnim(sheatheSwordAnim);
+                            spriteBuffer.QueueAnim(crouchAnim);
+
+                        }
+
+                    }
+
+                    isCrouching = !isCrouching;
+                }
 
             }
 

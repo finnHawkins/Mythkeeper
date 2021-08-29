@@ -1,6 +1,7 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"C:/Users/Finn/OneDrive/Mythkeeper/Content/entities/player/spr_pIdle1_4.png","C:/Users/Finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/entities/player/spr_pIdle1_4.xnb","TextureProcessor","Texture2DContent",1736,10165,0.1271794
-"C:/Users/Finn/OneDrive/Mythkeeper/Content/entities/player/spr_pIdle2_4.png","C:/Users/Finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/entities/player/spr_pIdle2_4.xnb","TextureProcessor","Texture2DContent",1759,11285,0.0093926
-"C:/Users/Finn/OneDrive/Mythkeeper/Content/entities/player/spr_pSheathe_4.png","C:/Users/Finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/entities/player/spr_pSheathe_4.xnb","TextureProcessor","Texture2DContent",1919,11685,0.0091946
-"C:/Users/Finn/OneDrive/Mythkeeper/Content/entities/player/spr_pUnsheathe_3.png","C:/Users/Finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/entities/player/spr_pUnsheathe_3.xnb","TextureProcessor","Texture2DContent",1374,6949,0.008218
-"C:/Users/Finn/OneDrive/Mythkeeper/Content/rooms/mansion.jpg","C:/Users/Finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/rooms/mansion.xnb","TextureProcessor","Texture2DContent",189619,5760085,0.180532
+"C:/Users/Finn/OneDrive/Mythkeeper/Content/entities/player/spr_pCrouch_4.png","C:/Users/Finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/entities/player/spr_pCrouch_4.xnb","TextureProcessor","Texture2DContent",1418,7125,0.1524669
+"C:/Users/Finn/OneDrive/Mythkeeper/Content/entities/player/spr_pIdle1_4.png","C:/Users/Finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/entities/player/spr_pIdle1_4.xnb","TextureProcessor","Texture2DContent",1736,10165,0.0143529
+"C:/Users/Finn/OneDrive/Mythkeeper/Content/entities/player/spr_pIdle2_4.png","C:/Users/Finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/entities/player/spr_pIdle2_4.xnb","TextureProcessor","Texture2DContent",1759,11285,0.0053133
+"C:/Users/Finn/OneDrive/Mythkeeper/Content/entities/player/spr_pSheathe_4.png","C:/Users/Finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/entities/player/spr_pSheathe_4.xnb","TextureProcessor","Texture2DContent",1919,11685,0.012088
+"C:/Users/Finn/OneDrive/Mythkeeper/Content/entities/player/spr_pUnsheathe_3.png","C:/Users/Finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/entities/player/spr_pUnsheathe_3.xnb","TextureProcessor","Texture2DContent",1374,6949,0.0138658
+"C:/Users/Finn/OneDrive/Mythkeeper/Content/rooms/mansion.jpg","C:/Users/Finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/rooms/mansion.xnb","TextureProcessor","Texture2DContent",189619,5760085,0.1857611
