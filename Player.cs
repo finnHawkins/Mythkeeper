@@ -22,31 +22,31 @@ namespace Mythkeeper {
         private AnimatedSprite idleAnimSU;
         private AnimatedSprite drawSwordAnim;
         private AnimatedSprite sheatheSwordAnim;
-        private Animation deathAnim;
+        private AnimatedSprite deathAnim;
 
         // Movement Animations
-        private Animation climbAnim;
+        private AnimatedSprite climbAnim;
         private AnimatedSprite crouchAnim;
-        private Animation fallAnim;
-        private Animation jumpAnim;
-        private Animation rollAnim;
-        private Animation slideAnim;
-        private Animation moveAnim;
-        private Animation standAnim;
+        private AnimatedSprite fallAnim;
+        private AnimatedSprite jumpAnim;
+        private AnimatedSprite rollAnim;
+        private AnimatedSprite slideAnim;
+        private AnimatedSprite moveAnim;
+        private AnimatedSprite standAnim;
 
-        private Animation wallSlideAnim;
+        private AnimatedSprite wallSlideAnim;
 
         // Attack Animations
-        private Animation mageAtkAnim;
-        private Animation mageAtkHoldAnim;
-        private Animation airAtk1;
-        private Animation airAtk2;
-        private Animation airAtk31;
-        private Animation airAtk32;
-        private Animation airAtk33;
-        private Animation meleeAtk1;
-        private Animation meleeAtk2;
-        private Animation meleeAtk3;
+        private AnimatedSprite mageAtkAnim;
+        private AnimatedSprite mageAtkHoldAnim;
+        private AnimatedSprite airAtk1;
+        private AnimatedSprite airAtk2;
+        private AnimatedSprite airAtk31;
+        private AnimatedSprite airAtk32;
+        private AnimatedSprite airAtk33;
+        private AnimatedSprite meleeAtk1;
+        private AnimatedSprite meleeAtk2;
+        private AnimatedSprite meleeAtk3;
 
         // Sounds
 
@@ -54,6 +54,9 @@ namespace Mythkeeper {
 
         // Private variables
         private Boolean swordSheathed;
+
+        //0 - idle, 1 - moving, 2 - crouching, 3 - sliding, 4 - jumping
+        //private int movementStatus;
         private Boolean isMoving;
         private Boolean isJumping;
         private Boolean isCrouching;
@@ -67,7 +70,10 @@ namespace Mythkeeper {
 
         private int playerX;
         private int playerY;
-        private int playerHealth;
+        private float playerSpeed;
+
+        //1 - left, 2 - right
+        private int playerDirection;
 
         public Player(GraphicsDevice gd) {
 
@@ -85,9 +91,7 @@ namespace Mythkeeper {
 
             playerX = 400;
             playerY = 200;
-            playerHealth = 100;
-
-
+            playerSpeed = (float) 2.5;
 
         }
 
@@ -105,6 +109,8 @@ namespace Mythkeeper {
             sheatheSwordAnim = new AnimatedSprite(sheathe, 1, 4, 4, false);
             Texture2D crouch = content.Load<Texture2D>("entities\\player\\spr_pCrouch_4");
             crouchAnim = new AnimatedSprite(crouch, 1, 4, 4, false);
+            Texture2D move = content.Load<Texture2D>("entities\\player\\spr_pMove_6");
+            moveAnim = new AnimatedSprite(move, 1, 6, 6, false);
 
             currentAnimation = idleAnimSS;
 
@@ -117,12 +123,6 @@ namespace Mythkeeper {
         }
 
         public void Update(GameTime gameTime) {
-
-            //if the spritebuffer is empty 
-            //depending on what key is pressed, add the right animation to the spritebuffer
-            //if it was a movement key, move the character
-            //otherwise
-            //
 
             float frameRate = 1 / (float)gameTime.ElapsedGameTime.TotalSeconds;
 
@@ -137,8 +137,6 @@ namespace Mythkeeper {
 
                     checkKeypress();
 
-                    //currentAnimation = swordSheathed ? idleAnimSS : idleAnimSU;
-
                 }
             } else {
 
@@ -152,7 +150,11 @@ namespace Mythkeeper {
 
         public void checkKeypress() {
 
-            if (!isCrouching) {
+
+            //if the player is not crouching and they press the Q key
+            //their weapon is sheathed or unsheathed depending on whether
+            //it was sheathed or unsheathed previously
+            if (!isCrouching && !isMoving) {
 
                 if (Keyboard.GetState().IsKeyDown(Keys.Q)) {
 
@@ -176,6 +178,7 @@ namespace Mythkeeper {
 
                 if (isMoving) {
                     isSliding = true;
+
                 } else {
 
                     if (isCrouching) {
@@ -226,8 +229,61 @@ namespace Mythkeeper {
                 Keyboard.GetState().IsKeyDown(Keys.D)) {
 
                 isMoving = true;
+                movePlayer();
+            } else {
+
+                isMoving = false;
+
+                //if(!swordSheathed) {
+
+                //    spriteBuffer.QueueAnim(drawSwordAnim);
+                //    spriteBuffer.QueueAnim(idleAnimSU);
+
+                //} else {
+
+                currentAnimation = swordSheathed ? idleAnimSS : idleAnimSU;
+
+                //}
 
             }
+
+        }
+
+        public void movePlayer() {
+
+            //if(!swordSheathed) {
+
+            //    spriteBuffer.QueueAnim(sheatheSwordAnim);
+            //    spriteBuffer.QueueAnim(moveAnim);
+
+            //} else {
+
+            currentAnimation = moveAnim;
+
+            //}
+
+            KeyboardState kbState = Keyboard.GetState();
+
+            if(kbState.IsKeyDown(Keys.A)) {
+
+                playerX--;
+
+            } else if (kbState.IsKeyDown(Keys.D)) {
+
+                playerX++;
+
+            }
+            
+            if (kbState.IsKeyDown(Keys.W)) {
+
+                playerY--;
+
+            } else if (kbState.IsKeyDown(Keys.S)) {
+
+                playerY++;
+
+            }
+
 
 
         }

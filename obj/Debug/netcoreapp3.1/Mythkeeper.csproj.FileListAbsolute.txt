@@ -52,3 +52,4 @@ C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\Content\entities\playe
 C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\Content\entities\player\spr_pSheathe_4.xnb
 C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\Content\entities\player\spr_pUnsheathe_3.xnb
 C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\Content\entities\player\spr_pCrouch_4.xnb
+C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\Content\entities\player\spr_pMove_6.xnb
