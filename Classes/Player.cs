@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Input.Touch;
 using Microsoft.Xna.Framework.Content;
+using MonoGame.Extended.Input;
 
 namespace Mythkeeper {
     class Player {
@@ -54,6 +55,8 @@ namespace Mythkeeper {
 
         // Private variables
         private Boolean swordSheathed;
+        private int playerMaxHealth;
+        private int playerHealth;
 
         //0 - idle, 1 - moving, 2 - crouching, 3 - sliding, 4 - jumping
         //private int movementStatus;
@@ -104,9 +107,9 @@ namespace Mythkeeper {
             Texture2D idle2 = content.Load<Texture2D>("entities\\player\\spr_pIdle2_4");
             idleAnimSU = new AnimatedSprite(idle2, 1, 4, 4, true);
             Texture2D draw = content.Load<Texture2D>("entities\\player\\spr_pUnsheathe_3");
-            drawSwordAnim = new AnimatedSprite(draw, 1, 3, 3, false);
+            drawSwordAnim = new AnimatedSprite(draw, 1, 3, 1, false);
             Texture2D sheathe = content.Load<Texture2D>("entities\\player\\spr_pSheathe_4");
-            sheatheSwordAnim = new AnimatedSprite(sheathe, 1, 4, 4, false);
+            sheatheSwordAnim = new AnimatedSprite(sheathe, 1, 4, 2, false);
             Texture2D crouch = content.Load<Texture2D>("entities\\player\\spr_pCrouch_4");
             crouchAnim = new AnimatedSprite(crouch, 1, 4, 4, false);
             Texture2D move = content.Load<Texture2D>("entities\\player\\spr_pMove_6");
@@ -234,16 +237,33 @@ namespace Mythkeeper {
 
                 isMoving = false;
 
-                //if(!swordSheathed) {
+                if(KeyboardExtended.GetState().WasKeyJustDown(Keys.A) ||
+                   KeyboardExtended.GetState().WasKeyJustDown(Keys.D) ||
+                   KeyboardExtended.GetState().WasKeyJustDown(Keys.S) ||
+                   KeyboardExtended.GetState().WasKeyJustDown(Keys.W)) {
 
-                //    spriteBuffer.QueueAnim(drawSwordAnim);
-                //    spriteBuffer.QueueAnim(idleAnimSU);
+                    if (!swordSheathed) {
 
-                //} else {
+                        spriteBuffer.QueueAnim(drawSwordAnim);
+                        spriteBuffer.QueueAnim(idleAnimSU);
 
-                currentAnimation = swordSheathed ? idleAnimSS : idleAnimSU;
+                    } else {
 
-                //}
+                        if (spriteBuffer.IsEmpty()) {
+
+                            currentAnimation = swordSheathed ? idleAnimSS : idleAnimSU;
+                        }
+                    }
+
+
+                } else {
+
+                    if (spriteBuffer.IsEmpty()) {
+
+                        currentAnimation = swordSheathed ? idleAnimSS : idleAnimSU;
+                    }
+
+                }
 
             }
 
@@ -251,16 +271,34 @@ namespace Mythkeeper {
 
         public void movePlayer() {
 
-            //if(!swordSheathed) {
+            if (KeyboardExtended.GetState().WasKeyJustUp(Keys.A) ||
+                   KeyboardExtended.GetState().WasKeyJustUp(Keys.D) ||
+                   KeyboardExtended.GetState().WasKeyJustUp(Keys.S) ||
+                   KeyboardExtended.GetState().WasKeyJustUp(Keys.W)) {
 
-            //    spriteBuffer.QueueAnim(sheatheSwordAnim);
-            //    spriteBuffer.QueueAnim(moveAnim);
+                if (!swordSheathed) {
 
-            //} else {
+                    spriteBuffer.QueueAnim(sheatheSwordAnim);
+                    spriteBuffer.QueueAnim(moveAnim);
 
-            currentAnimation = moveAnim;
+                } else {
 
-            //}
+                    if (spriteBuffer.IsEmpty()) {
+
+                        currentAnimation = moveAnim;
+
+                    }
+
+                }
+            } else {
+
+                if (spriteBuffer.IsEmpty()) {
+
+                    currentAnimation = moveAnim;
+
+                }
+
+            }
 
             KeyboardState kbState = Keyboard.GetState();
 

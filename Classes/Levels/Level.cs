@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Mythkeeper {
-    class GameManager {
-
-        private int gameMode;
-        private int difficulty;
+    class Level {
 
 
 
-        public GameManager() {
+        public Level(int doorCount, int[,] doorCoords, int[] doorIDs) {
+
+
+
         }
 
     }

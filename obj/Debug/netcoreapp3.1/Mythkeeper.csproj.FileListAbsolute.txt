@@ -53,3 +53,12 @@ C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\Content\entities\playe
 C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\Content\entities\player\spr_pUnsheathe_3.xnb
 C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\Content\entities\player\spr_pCrouch_4.xnb
 C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\Content\entities\player\spr_pMove_6.xnb
+C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\MonoGame.Extended.dll
+C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\Autofac.dll
+C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\MonoGame.Extended.Graphics.dll
+C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\MonoGame.Extended.Tiled.dll
+C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\MonoGame.Extended.Collisions.dll
+C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\MonoGame.Extended.Entities.dll
+C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\MonoGame.Extended.Input.dll
+C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\MonoGame.Extended.SceneGraphs.dll
