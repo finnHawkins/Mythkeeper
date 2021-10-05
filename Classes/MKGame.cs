@@ -11,12 +11,12 @@ namespace Mythkeeper {
     public class MKGame : Game {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch spriteBatch;
-        //private AnimatedSprite playerAnim;
         private Texture2D background;
         private Rectangle mainScreen;
         public static ContentManager content;
         private Player player;
         public float frameRate;
+        private Level thislevel;
 
         public MKGame() {
             _graphics = new GraphicsDeviceManager(this);
@@ -26,24 +26,17 @@ namespace Mythkeeper {
         }
 
         protected override void Initialize() {
-            // TODO: Add your initialization logic here
-
+            
             player = new Player(GraphicsDevice);
+            thislevel = new Level(GraphicsDevice);
 
             base.Initialize();
-
 
         }
 
         protected override void LoadContent() {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            //Texture2D texture = Content.Load<Texture2D>("spr_pIdle1_4");
-            background = Content.Load<Texture2D>("rooms\\mansion");
             mainScreen = new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
-
-            //playerAnim = new AnimatedSprite(texture, 1, 4, 4);
-
-            // TODO: use this.Content to load your game content here
 
             player.LoadContent();
         }
@@ -52,28 +45,16 @@ namespace Mythkeeper {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
-
-            //playerAnim.Update(gameTime);
-
             base.Update(gameTime);
             player.Update(gameTime);
             frameRate = 1 / (float)gameTime.ElapsedGameTime.TotalSeconds;
         }
 
         protected override void Draw(GameTime gameTime) {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            // TODO: Add your drawing code here
-
-            spriteBatch.Begin();
-            spriteBatch.Draw(background, mainScreen, Color.White);
-            spriteBatch.End();
-
-            //playerAnim.Draw(spriteBatch, new Vector2(400, 200));
 
             base.Draw(gameTime);
             player.Draw();
+            thislevel.Draw(gameTime);
         }
 
         /// <summary>

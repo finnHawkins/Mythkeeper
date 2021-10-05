@@ -4,6 +4,7 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
+    <File>C:/Users/Finn/OneDrive/Mythkeeper/Content/adventurer-v1.5-Sheet.png</File>
     <File>C:/Users/Finn/OneDrive/Mythkeeper/Content/entities/player/spr_pCrouch_4.png</File>
     <File>C:/Users/Finn/OneDrive/Mythkeeper/Content/entities/player/spr_pIdle1_4.png</File>
     <File>C:/Users/Finn/OneDrive/Mythkeeper/Content/entities/player/spr_pIdle2_4.png</File>
@@ -20,5 +21,6 @@
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
+    <File>rooms/entrance.jpg</File>
   </DestFiles>
 </SourceFileCollection>

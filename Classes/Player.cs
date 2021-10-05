@@ -7,6 +7,9 @@ using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Input.Touch;
 using Microsoft.Xna.Framework.Content;
 using MonoGame.Extended.Input;
+using MonoGame.Extended.Content;
+using MonoGame.Extended.Serialization;
+using MonoGame.Extended.Sprites;
 
 namespace Mythkeeper {
     class Player {
@@ -19,35 +22,8 @@ namespace Mythkeeper {
         private GraphicsDevice graphicDevice;
 
         // Animations
-        private AnimatedSprite idleAnimSS;
-        private AnimatedSprite idleAnimSU;
-        private AnimatedSprite drawSwordAnim;
-        private AnimatedSprite sheatheSwordAnim;
-        private AnimatedSprite deathAnim;
-
-        // Movement Animations
-        private AnimatedSprite climbAnim;
-        private AnimatedSprite crouchAnim;
-        private AnimatedSprite fallAnim;
-        private AnimatedSprite jumpAnim;
-        private AnimatedSprite rollAnim;
-        private AnimatedSprite slideAnim;
-        private AnimatedSprite moveAnim;
-        private AnimatedSprite standAnim;
-
-        private AnimatedSprite wallSlideAnim;
-
-        // Attack Animations
-        private AnimatedSprite mageAtkAnim;
-        private AnimatedSprite mageAtkHoldAnim;
-        private AnimatedSprite airAtk1;
-        private AnimatedSprite airAtk2;
-        private AnimatedSprite airAtk31;
-        private AnimatedSprite airAtk32;
-        private AnimatedSprite airAtk33;
-        private AnimatedSprite meleeAtk1;
-        private AnimatedSprite meleeAtk2;
-        private AnimatedSprite meleeAtk3;
+        private AnimatedSprite pSprite;
+        private Vector2 pPos;
 
         // Sounds
 
@@ -69,7 +45,6 @@ namespace Mythkeeper {
 
         private AnimatedSprite currentAnimation;
         private float animationDelay;
-        private AnimationBuffer spriteBuffer;
 
         private int playerX;
         private int playerY;
@@ -90,7 +65,6 @@ namespace Mythkeeper {
             isHit = false;
 
             animationDelay = 0;
-            spriteBuffer = new AnimationBuffer();
 
             playerX = 400;
             playerY = 200;
@@ -101,53 +75,76 @@ namespace Mythkeeper {
         public void LoadContent() {
 
             spriteBatch = new SpriteBatch(graphicDevice);
+            var spriteSheet = content.Load<SpriteSheet>("playersheet.sf", new JsonContentLoader());
+            var sprite = new AnimatedSprite(spriteSheet);
 
-            Texture2D idle1 = content.Load<Texture2D>("entities\\player\\spr_pIdle1_4");
-            idleAnimSS = new AnimatedSprite(idle1, 1, 4, 4, true);
-            Texture2D idle2 = content.Load<Texture2D>("entities\\player\\spr_pIdle2_4");
-            idleAnimSU = new AnimatedSprite(idle2, 1, 4, 4, true);
-            Texture2D draw = content.Load<Texture2D>("entities\\player\\spr_pUnsheathe_3");
-            drawSwordAnim = new AnimatedSprite(draw, 1, 3, 1, false);
-            Texture2D sheathe = content.Load<Texture2D>("entities\\player\\spr_pSheathe_4");
-            sheatheSwordAnim = new AnimatedSprite(sheathe, 1, 4, 2, false);
-            Texture2D crouch = content.Load<Texture2D>("entities\\player\\spr_pCrouch_4");
-            crouchAnim = new AnimatedSprite(crouch, 1, 4, 4, false);
-            Texture2D move = content.Load<Texture2D>("entities\\player\\spr_pMove_6");
-            moveAnim = new AnimatedSprite(move, 1, 6, 6, false);
-
-            currentAnimation = idleAnimSS;
+            sprite.Play("idleAnimS");
+            pPos = new Vector2(100, 100);
+            pSprite = sprite;
 
         }
 
         public void Draw() {
 
-            currentAnimation.Draw(spriteBatch, new Vector2(playerX, playerY));
+            spriteBatch.Begin();
+            spriteBatch.Draw(pSprite, pPos);
+            spriteBatch.End();
 
         }
 
         public void Update(GameTime gameTime) {
 
-            float frameRate = 1 / (float)gameTime.ElapsedGameTime.TotalSeconds;
+            var deltaSeconds = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            var keyboardState = Keyboard.GetState();
+            var animation = "idleAnimS";
+            var walkSpeed = deltaSeconds * 128;
+
+            //float frameRate = 1 / (float)gameTime.ElapsedGameTime.TotalSeconds;
 
 
-            if (animationDelay == 0) {
-                if (!spriteBuffer.IsEmpty()) {
+            //if (animationDelay == 0) {
+            //    if (!spriteBuffer.IsEmpty()) {
 
-                    currentAnimation = spriteBuffer.DequeueAnim(0);
-                    animationDelay = frameRate / currentAnimation.fps;
+            //        currentAnimation = spriteBuffer.DequeueAnim(0);
+            //        animationDelay = frameRate / currentAnimation.fps;
 
-                } else {
+            //    } else {
 
-                    checkKeypress();
+            //        checkKeypress();
 
-                }
-            } else {
+            //    }
+            //} else {
 
-                animationDelay = animationDelay < 0 ? 0 : animationDelay- currentAnimation.fps;
+            //    animationDelay = animationDelay < 0 ? 0 : animationDelay- currentAnimation.fps;
 
+            //}
+
+            //currentAnimation.Update(gameTime);
+
+
+            if (keyboardState.IsKeyDown(Keys.W) || keyboardState.IsKeyDown(Keys.Up)) {
+                animation = "atkAnim1";
+                pPos.Y -= walkSpeed;
             }
 
-            currentAnimation.Update(gameTime);
+            if (keyboardState.IsKeyDown(Keys.S) || keyboardState.IsKeyDown(Keys.Down)) {
+                animation = "atkAnim2";
+                pPos.Y += walkSpeed;
+            }
+
+            if (keyboardState.IsKeyDown(Keys.A) || keyboardState.IsKeyDown(Keys.Left)) {
+                animation = "atkAnim3";
+                pPos.X -= walkSpeed;
+            }
+
+            if (keyboardState.IsKeyDown(Keys.D) || keyboardState.IsKeyDown(Keys.Right)) {
+                animation = "deathAnim";
+                pPos.X += walkSpeed;
+            }
+
+            pSprite.Play(animation);
+
+            pSprite.Update(deltaSeconds);
 
         }
 
@@ -157,170 +154,170 @@ namespace Mythkeeper {
             //if the player is not crouching and they press the Q key
             //their weapon is sheathed or unsheathed depending on whether
             //it was sheathed or unsheathed previously
-            if (!isCrouching && !isMoving) {
+            //if (!isCrouching && !isMoving) {
 
-                if (Keyboard.GetState().IsKeyDown(Keys.Q)) {
+            //    if (Keyboard.GetState().IsKeyDown(Keys.Q)) {
 
-                    if (swordSheathed) {
+            //        if (swordSheathed) {
 
-                        spriteBuffer.QueueAnim(drawSwordAnim);
-                        spriteBuffer.QueueAnim(idleAnimSU);
-                        swordSheathed = false;
+            //            spriteBuffer.QueueAnim(drawSwordAnim);
+            //            spriteBuffer.QueueAnim(idleAnimSU);
+            //            swordSheathed = false;
 
-                    } else {
+            //        } else {
 
-                        spriteBuffer.QueueAnim(sheatheSwordAnim);
-                        spriteBuffer.QueueAnim(idleAnimSS);
-                        swordSheathed = true;
-                    }
+            //            spriteBuffer.QueueAnim(sheatheSwordAnim);
+            //            spriteBuffer.QueueAnim(idleAnimSS);
+            //            swordSheathed = true;
+            //        }
 
-                }
-            }
+            //    }
+            //}
 
-            if (Keyboard.GetState().IsKeyDown(Keys.LeftControl)) {
+            //if (Keyboard.GetState().IsKeyDown(Keys.LeftControl)) {
 
-                if (isMoving) {
-                    isSliding = true;
+            //    if (isMoving) {
+            //        isSliding = true;
 
-                } else {
+            //    } else {
 
-                    if (isCrouching) {
+            //        if (isCrouching) {
 
-                        if(swordSheathed) {
+            //            if(swordSheathed) {
 
-                            currentAnimation = idleAnimSS;
+            //                currentAnimation = idleAnimSS;
 
-                        } else {
+            //            } else {
 
-                            spriteBuffer.QueueAnim(idleAnimSS);
-                            spriteBuffer.QueueAnim(drawSwordAnim);
-                            spriteBuffer.QueueAnim(idleAnimSU);
+            //                spriteBuffer.QueueAnim(idleAnimSS);
+            //                spriteBuffer.QueueAnim(drawSwordAnim);
+            //                spriteBuffer.QueueAnim(idleAnimSU);
 
-                        }
-
-
-                    } else {
-
-                        if (swordSheathed) {
-
-                            currentAnimation = crouchAnim;
-
-                        } else {
-
-                            spriteBuffer.QueueAnim(sheatheSwordAnim);
-                            spriteBuffer.QueueAnim(crouchAnim);
-
-                        }
-
-                    }
-
-                    isCrouching = !isCrouching;
-                }
-
-            }
+            //            }
 
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Space)) {
+            //        } else {
 
-                isJumping = true;
+            //            if (swordSheathed) {
 
-            }
+            //                currentAnimation = crouchAnim;
 
-            if (Keyboard.GetState().IsKeyDown(Keys.A) ||
-                Keyboard.GetState().IsKeyDown(Keys.W) ||
-                Keyboard.GetState().IsKeyDown(Keys.S) ||
-                Keyboard.GetState().IsKeyDown(Keys.D)) {
+            //            } else {
 
-                isMoving = true;
-                movePlayer();
-            } else {
+            //                spriteBuffer.QueueAnim(sheatheSwordAnim);
+            //                spriteBuffer.QueueAnim(crouchAnim);
 
-                isMoving = false;
+            //            }
 
-                if(KeyboardExtended.GetState().WasKeyJustDown(Keys.A) ||
-                   KeyboardExtended.GetState().WasKeyJustDown(Keys.D) ||
-                   KeyboardExtended.GetState().WasKeyJustDown(Keys.S) ||
-                   KeyboardExtended.GetState().WasKeyJustDown(Keys.W)) {
+            //        }
 
-                    if (!swordSheathed) {
+            //        isCrouching = !isCrouching;
+            //    }
 
-                        spriteBuffer.QueueAnim(drawSwordAnim);
-                        spriteBuffer.QueueAnim(idleAnimSU);
-
-                    } else {
-
-                        if (spriteBuffer.IsEmpty()) {
-
-                            currentAnimation = swordSheathed ? idleAnimSS : idleAnimSU;
-                        }
-                    }
+            //}
 
 
-                } else {
+            //if (Keyboard.GetState().IsKeyDown(Keys.Space)) {
 
-                    if (spriteBuffer.IsEmpty()) {
+            //    isJumping = true;
 
-                        currentAnimation = swordSheathed ? idleAnimSS : idleAnimSU;
-                    }
+            //}
 
-                }
+            //if (Keyboard.GetState().IsKeyDown(Keys.A) ||
+            //    Keyboard.GetState().IsKeyDown(Keys.W) ||
+            //    Keyboard.GetState().IsKeyDown(Keys.S) ||
+            //    Keyboard.GetState().IsKeyDown(Keys.D)) {
 
-            }
+            //    isMoving = true;
+            //    movePlayer();
+            //} else {
+
+            //    isMoving = false;
+
+            //    if(KeyboardExtended.GetState().WasKeyJustDown(Keys.A) ||
+            //       KeyboardExtended.GetState().WasKeyJustDown(Keys.D) ||
+            //       KeyboardExtended.GetState().WasKeyJustDown(Keys.S) ||
+            //       KeyboardExtended.GetState().WasKeyJustDown(Keys.W)) {
+
+            //        if (!swordSheathed) {
+
+            //            spriteBuffer.QueueAnim(drawSwordAnim);
+            //            spriteBuffer.QueueAnim(idleAnimSU);
+
+            //        } else {
+
+            //            if (spriteBuffer.IsEmpty()) {
+
+            //                currentAnimation = swordSheathed ? idleAnimSS : idleAnimSU;
+            //            }
+            //        }
+
+
+            //    } else {
+
+            //        if (spriteBuffer.IsEmpty()) {
+
+            //            currentAnimation = swordSheathed ? idleAnimSS : idleAnimSU;
+            //        }
+
+            //    }
+
+            //}
 
         }
 
         public void movePlayer() {
 
-            if (KeyboardExtended.GetState().WasKeyJustUp(Keys.A) ||
-                   KeyboardExtended.GetState().WasKeyJustUp(Keys.D) ||
-                   KeyboardExtended.GetState().WasKeyJustUp(Keys.S) ||
-                   KeyboardExtended.GetState().WasKeyJustUp(Keys.W)) {
+            //if (KeyboardExtended.GetState().WasKeyJustUp(Keys.A) ||
+            //       KeyboardExtended.GetState().WasKeyJustUp(Keys.D) ||
+            //       KeyboardExtended.GetState().WasKeyJustUp(Keys.S) ||
+            //       KeyboardExtended.GetState().WasKeyJustUp(Keys.W)) {
 
-                if (!swordSheathed) {
+            //    if (!swordSheathed) {
 
-                    spriteBuffer.QueueAnim(sheatheSwordAnim);
-                    spriteBuffer.QueueAnim(moveAnim);
+            //        spriteBuffer.QueueAnim(sheatheSwordAnim);
+            //        spriteBuffer.QueueAnim(moveAnim);
 
-                } else {
+            //    } else {
 
-                    if (spriteBuffer.IsEmpty()) {
+            //        if (spriteBuffer.IsEmpty()) {
 
-                        currentAnimation = moveAnim;
+            //            currentAnimation = moveAnim;
 
-                    }
+            //        }
 
-                }
-            } else {
+            //    }
+            //} else {
 
-                if (spriteBuffer.IsEmpty()) {
+            //    if (spriteBuffer.IsEmpty()) {
 
-                    currentAnimation = moveAnim;
+            //        currentAnimation = moveAnim;
 
-                }
+            //    }
 
-            }
+            //}
 
-            KeyboardState kbState = Keyboard.GetState();
+            //KeyboardState kbState = Keyboard.GetState();
 
-            if(kbState.IsKeyDown(Keys.A)) {
+            //if(kbState.IsKeyDown(Keys.A)) {
 
-                playerX--;
+            //    playerX--;
 
-            } else if (kbState.IsKeyDown(Keys.D)) {
+            //} else if (kbState.IsKeyDown(Keys.D)) {
 
-                playerX++;
+            //    playerX++;
 
-            }
+            //}
             
-            if (kbState.IsKeyDown(Keys.W)) {
+            //if (kbState.IsKeyDown(Keys.W)) {
 
-                playerY--;
+            //    playerY--;
 
-            } else if (kbState.IsKeyDown(Keys.S)) {
+            //} else if (kbState.IsKeyDown(Keys.S)) {
 
-                playerY++;
+            //    playerY++;
 
-            }
+            //}
 
 
 
