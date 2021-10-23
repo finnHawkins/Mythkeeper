@@ -23,7 +23,7 @@ namespace Mythkeeper {
 
         }
 
-        private void LoadContent() {
+        public void LoadContent() {
 
             spriteBatch = new SpriteBatch(graphicDevice);
             background = content.Load<Texture2D>("rooms\\mansion");

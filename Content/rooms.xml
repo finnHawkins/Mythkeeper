@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<rooms>
+    <room>
+        <name>Entrance Hall</name>
+        <floor>0</floor>
+        <doors>
+            <door>
+                <connectingRoom>Main Hall</connectingRoom>
+                <Xcoords></Xcoords>
+                <Ycoords></Ycoords>
+            </door>
+        </doors>
+    </room>
+</rooms>

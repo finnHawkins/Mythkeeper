@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/Finn/OneDrive/Mythkeeper/Content/rooms/mansion.jpg</SourceFile>
-  <SourceTime>2021-08-29T10:52:26.9025776+01:00</SourceTime>
-  <DestFile>C:/Users/Finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/rooms/entrance.xnb</DestFile>
-  <DestTime>2021-10-19T21:20:25.6858839+01:00</DestTime>
+  <SourceFile>C:/Users/Finn/OneDrive/Mythkeeper/Content/playerSheetCropped.png</SourceFile>
+  <SourceTime>2021-10-23T10:11:08.1794114+01:00</SourceTime>
+  <DestFile>C:/Users/Finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/Content/playerSheetCropped.xnb</DestFile>
+  <DestTime>2021-10-23T10:11:10.2769937+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T17:17:54+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

@@ -9,27 +9,27 @@ using Microsoft.Xna.Framework.Content;
 
 namespace Mythkeeper {
     public class MKGame : Game {
-        private GraphicsDeviceManager _graphics;
+        private GraphicsDeviceManager gdm;
         private SpriteBatch spriteBatch;
-        private Texture2D background;
         private Rectangle mainScreen;
         public static ContentManager content;
         private Player player;
-        public float frameRate;
+        public float frameRate { get; set; }
         private Level thislevel;
+        private GameManager mkGM;
 
         public MKGame() {
-            _graphics = new GraphicsDeviceManager(this);
+            gdm = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            IsMouseVisible = true;
+            this.IsMouseVisible = true;
             content = Content;
         }
 
         protected override void Initialize() {
-            
+
             player = new Player(GraphicsDevice);
             thislevel = new Level(GraphicsDevice);
-
+            mkGM = new GameManager(1,1);
             base.Initialize();
 
         }
@@ -37,24 +37,28 @@ namespace Mythkeeper {
         protected override void LoadContent() {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             mainScreen = new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
-
             player.LoadContent();
+            thislevel.LoadContent();
+
         }
 
         protected override void Update(GameTime gameTime) {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
 
             base.Update(gameTime);
+            mkGM.Update(gameTime);
             player.Update(gameTime);
+
             frameRate = 1 / (float)gameTime.ElapsedGameTime.TotalSeconds;
+
         }
 
         protected override void Draw(GameTime gameTime) {
 
+            GraphicsDevice.Clear(Color.CornflowerBlue);
+
             base.Draw(gameTime);
-            player.Draw();
             thislevel.Draw(gameTime);
+            player.Draw();
         }
 
         /// <summary>
@@ -72,12 +76,6 @@ namespace Mythkeeper {
         public static ContentManager GetMainContentManager() {
 
             return content;
-
-        }
-
-        public float getFrameRate() {
-
-            return frameRate;
 
         }
 

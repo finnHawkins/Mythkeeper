@@ -21,6 +21,13 @@ C:\Users\Finn\OneDrive\Mythkeeper\Mythkeeper\obj\Debug\netcoreapp3.1\Mythkeeper.
 C:\Users\Finn\OneDrive\Mythkeeper\Mythkeeper\obj\Debug\netcoreapp3.1\Mythkeeper.dll
 C:\Users\Finn\OneDrive\Mythkeeper\Mythkeeper\obj\Debug\netcoreapp3.1\Mythkeeper.pdb
 C:\Users\Finn\OneDrive\Mythkeeper\Mythkeeper\obj\Debug\netcoreapp3.1\Mythkeeper.genruntimeconfig.cache
+C:\Users\Finn\OneDrive\Mythkeeper\obj\Debug\netcoreapp3.1\Mythkeeper.csproj.AssemblyReference.cache
+C:\Users\Finn\OneDrive\Mythkeeper\obj\Debug\netcoreapp3.1\Mythkeeper.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Finn\OneDrive\Mythkeeper\obj\Debug\netcoreapp3.1\Mythkeeper.AssemblyInfoInputs.cache
+C:\Users\Finn\OneDrive\Mythkeeper\obj\Debug\netcoreapp3.1\Mythkeeper.AssemblyInfo.cs
+C:\Users\Finn\OneDrive\Mythkeeper\obj\Debug\netcoreapp3.1\Mythkeeper.csproj.CoreCompileInputs.cache
+C:\Users\Finn\OneDrive\Mythkeeper\obj\Debug\netcoreapp3.1\Mythkeeper.dll
+C:\Users\Finn\OneDrive\Mythkeeper\obj\Debug\netcoreapp3.1\Mythkeeper.pdb
 C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\Content\adventurer-v1.5-Sheet.xnb
 C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\Content\entities\player\spr_pCrouch_4.xnb
 C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\Content\entities\player\spr_pIdle1_4.xnb
@@ -29,6 +36,7 @@ C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\Content\entities\playe
 C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\Content\entities\player\spr_pSheathe_4.xnb
 C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\Content\entities\player\spr_pUnsheathe_3.xnb
 C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\Content\entities\spr_pIdle1_4.xnb
+C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\Content\playerSheetCropped.xnb
 C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\Content\rooms\entrance.xnb
 C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\Content\rooms\mansion.xnb
 C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\Content\spr_pIdle1_4.xnb
@@ -57,11 +65,4 @@ C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\runtimes\win-x64\nativ
 C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\soft_oal.dll
 C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\SDL2.dll
 C:\Users\Finn\OneDrive\Mythkeeper\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\soft_oal.dll
-C:\Users\Finn\OneDrive\Mythkeeper\obj\Debug\netcoreapp3.1\Mythkeeper.csproj.AssemblyReference.cache
-C:\Users\Finn\OneDrive\Mythkeeper\obj\Debug\netcoreapp3.1\Mythkeeper.AssemblyInfoInputs.cache
-C:\Users\Finn\OneDrive\Mythkeeper\obj\Debug\netcoreapp3.1\Mythkeeper.AssemblyInfo.cs
-C:\Users\Finn\OneDrive\Mythkeeper\obj\Debug\netcoreapp3.1\Mythkeeper.csproj.CoreCompileInputs.cache
-C:\Users\Finn\OneDrive\Mythkeeper\obj\Debug\netcoreapp3.1\Mythkeeper.csproj.CopyComplete
-C:\Users\Finn\OneDrive\Mythkeeper\obj\Debug\netcoreapp3.1\Mythkeeper.dll
-C:\Users\Finn\OneDrive\Mythkeeper\obj\Debug\netcoreapp3.1\Mythkeeper.pdb
 C:\Users\Finn\OneDrive\Mythkeeper\obj\Debug\netcoreapp3.1\Mythkeeper.genruntimeconfig.cache

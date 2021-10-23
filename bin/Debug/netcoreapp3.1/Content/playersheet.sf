@@ -1,6 +1,6 @@
 {
   "textureAtlas": {
-    "texture": "..\\adventurer-v1.5-Sheet.png",
+    "texture": "..\\playerSheetCropped.png",
     "regionWidth": 50,
     "regionHeight": 37
   },

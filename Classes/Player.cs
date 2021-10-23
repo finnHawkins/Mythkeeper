@@ -10,6 +10,7 @@ using MonoGame.Extended.Input;
 using MonoGame.Extended.Content;
 using MonoGame.Extended.Serialization;
 using MonoGame.Extended.Sprites;
+using System.Collections;
 
 namespace Mythkeeper {
     class Player {
@@ -24,6 +25,8 @@ namespace Mythkeeper {
         // Animations
         private AnimatedSprite pSprite;
         private Vector2 pPos;
+        private float animationDelay;
+        private ArrayList spriteQueue;
 
         // Sounds
 
@@ -43,8 +46,6 @@ namespace Mythkeeper {
         private Boolean isSliding;
         private static int maxSlideDistance = 50;
 
-        private AnimatedSprite currentAnimation;
-        private float animationDelay;
 
         private int playerX;
         private int playerY;
@@ -70,17 +71,18 @@ namespace Mythkeeper {
             playerY = 200;
             playerSpeed = (float) 2.5;
 
+            spriteQueue = new ArrayList();
         }
 
         public void LoadContent() {
 
             spriteBatch = new SpriteBatch(graphicDevice);
             var spriteSheet = content.Load<SpriteSheet>("playersheet.sf", new JsonContentLoader());
-            var sprite = new AnimatedSprite(spriteSheet);
+            pSprite = new AnimatedSprite(spriteSheet);
+          
+            spriteQueue.Add("idleAnimU");
 
-            sprite.Play("idleAnimS");
             pPos = new Vector2(100, 100);
-            pSprite = sprite;
 
         }
 
@@ -96,54 +98,99 @@ namespace Mythkeeper {
 
             var deltaSeconds = (float)gameTime.ElapsedGameTime.TotalSeconds;
             var keyboardState = Keyboard.GetState();
-            var animation = "idleAnimS";
             var walkSpeed = deltaSeconds * 128;
 
-            //float frameRate = 1 / (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-
-            //if (animationDelay == 0) {
-            //    if (!spriteBuffer.IsEmpty()) {
-
-            //        currentAnimation = spriteBuffer.DequeueAnim(0);
-            //        animationDelay = frameRate / currentAnimation.fps;
-
-            //    } else {
-
-            //        checkKeypress();
-
-            //    }
-            //} else {
-
-            //    animationDelay = animationDelay < 0 ? 0 : animationDelay- currentAnimation.fps;
-
+            //if (keyboardState.IsKeyDown(Keys.W) || keyboardState.IsKeyDown(Keys.Up)) {
+            //    spriteQueue.Add("atkAnim1");
+            //    animation = "atkAnim1";
+            //    pPos.Y -= walkSpeed;
             //}
 
-            //currentAnimation.Update(gameTime);
+            //if (keyboardState.IsKeyDown(Keys.S) || keyboardState.IsKeyDown(Keys.Down)) {
+            //    spriteQueue.Add("atkAnim2");
+            //    animation = "atkAnim2";
+            //    pPos.Y += walkSpeed;
+            //}
+
+            //if (keyboardState.IsKeyDown(Keys.A) || keyboardState.IsKeyDown(Keys.Left)) {
+            //    animation = "atkAnim3";
+            //    spriteQueue.Add("atkAnim3");
+            //    pPos.X -= walkSpeed;
+            //}
+
+            //if (keyboardState.IsKeyDown(Keys.D) || keyboardState.IsKeyDown(Keys.Right)) {
+            //    animation = "deathAnim";
+            //    spriteQueue.Add("deathAnim");
+            //    pPos.X += walkSpeed;
+            //}
+
+            if (animationDelay <= 0) {
+
+                if (Keyboard.GetState().IsKeyDown(Keys.Q)) {
+
+                    if (swordSheathed) {
+
+                        spriteQueue.Add("drawAnim");
+                        spriteQueue.Add("idleAnimU");
+                        swordSheathed = false;
+                        spriteQueue.RemoveAt(0);
+                        animationDelay = 10;
+                    } else {
+
+                        spriteQueue.Add("sheatheAnim");
+                        spriteQueue.Add("idleAnimS");
+                        swordSheathed = true;
+                        spriteQueue.RemoveAt(0);
+                        animationDelay = 10;
+
+                    }
+
+                }
+
+                if (pSprite.Play((string)spriteQueue[0]).IsLooping) {
 
 
-            if (keyboardState.IsKeyDown(Keys.W) || keyboardState.IsKeyDown(Keys.Up)) {
-                animation = "atkAnim1";
-                pPos.Y -= walkSpeed;
+
+                } else {
+
+                    var currFrame = pSprite.Play((string)spriteQueue[0]).CurrentFrameIndex;
+                    var spriteFrameCount = pSprite.Play((string)spriteQueue[0]).KeyFrames.Length;
+
+                    Console.WriteLine(currFrame + " ; " + spriteFrameCount);
+
+                    if (currFrame == spriteFrameCount - 1) {
+
+                        spriteQueue.RemoveAt(0);
+
+                    }
+
+                }
+
+                if (Keyboard.GetState().IsKeyDown(Keys.LeftControl)) {
+
+                    if (isCrouching) {
+
+                        spriteQueue.Add("idleAnimC");
+                        spriteQueue.RemoveAt(0);
+
+                    } else {
+
+                        spriteQueue.Add("idleAnimS");
+                        spriteQueue.RemoveAt(0);
+
+                    }
+                    isCrouching = !isCrouching;
+                    animationDelay = 10;
+
+                }
+
+            } else {
+
+                animationDelay--;
+
             }
 
-            if (keyboardState.IsKeyDown(Keys.S) || keyboardState.IsKeyDown(Keys.Down)) {
-                animation = "atkAnim2";
-                pPos.Y += walkSpeed;
-            }
-
-            if (keyboardState.IsKeyDown(Keys.A) || keyboardState.IsKeyDown(Keys.Left)) {
-                animation = "atkAnim3";
-                pPos.X -= walkSpeed;
-            }
-
-            if (keyboardState.IsKeyDown(Keys.D) || keyboardState.IsKeyDown(Keys.Right)) {
-                animation = "deathAnim";
-                pPos.X += walkSpeed;
-            }
-
-            pSprite.Play(animation);
-
+            pSprite.Play((string)spriteQueue[0]);
             pSprite.Update(deltaSeconds);
 
         }
