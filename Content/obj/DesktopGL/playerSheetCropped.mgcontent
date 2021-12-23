@@ -2,8 +2,8 @@
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>C:/Users/finn/OneDrive/Mythkeeper/Content/playerSheetCropped.png</SourceFile>
   <SourceTime>2021-10-23T10:11:08+01:00</SourceTime>
-  <DestFile>C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/Content/playerSheetCropped.xnb</DestFile>
-  <DestTime>2021-12-17T15:29:36.3772185+00:00</DestTime>
+  <DestFile>C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/playerSheetCropped.xnb</DestFile>
+  <DestTime>2021-12-23T13:16:13.8808371+00:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T17:17:54+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

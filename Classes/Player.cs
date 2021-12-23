@@ -99,6 +99,9 @@ namespace Mythkeeper {
             playerSpeed = deltaSeconds * 128;
 
 
+            //
+
+
             isMoving = false;
 
             if(kbState.IsKeyDown(Keys.Space)) {
@@ -110,23 +113,6 @@ namespace Mythkeeper {
             }
 
             if (spriteQueue.Count == 1) {
-
-                if (kbState.IsKeyDown(Keys.D1)) {
-                    spriteQueue.Add("atkAnim1");
-                    spriteQueue.Add("idleAnimU");
-                    spriteQueue.RemoveAt(0);
-
-                } else if (kbState.IsKeyDown(Keys.D2)) {
-                    spriteQueue.Add("atkAnim2");
-                    spriteQueue.Add("idleAnimU");
-                    spriteQueue.RemoveAt(0);
-
-                } else if (kbState.IsKeyDown(Keys.D3)) {
-                    spriteQueue.Add("atkAnim3");
-                    spriteQueue.Add("idleAnimU");
-                    spriteQueue.RemoveAt(0);
-
-                }
 
                 if (kbState.IsKeyDown(Keys.W) || kbState.IsKeyDown(Keys.Up)) {
                     spriteQueue.Add("runAnim");
@@ -154,6 +140,23 @@ namespace Mythkeeper {
                     spriteQueue.RemoveAt(0);
                     pPos.X += playerSpeed;
                     isMoving = true;
+                }
+
+                if (kbState.IsKeyDown(Keys.D1)) {
+                    spriteQueue.Add("atkAnim1");
+                    spriteQueue.Add("idleAnimU");
+                    spriteQueue.RemoveAt(0);
+
+                } else if (kbState.IsKeyDown(Keys.D2)) {
+                    spriteQueue.Add("atkAnim2");
+                    spriteQueue.Add("idleAnimU");
+                    spriteQueue.RemoveAt(0);
+
+                } else if (kbState.IsKeyDown(Keys.D3)) {
+                    spriteQueue.Add("atkAnim3");
+                    spriteQueue.Add("idleAnimU");
+                    spriteQueue.RemoveAt(0);
+
                 }
 
                 if (Keyboard.GetState().IsKeyDown(Keys.Q)) {

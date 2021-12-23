@@ -1,3 +1,4 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"C:/Users/Finn/OneDrive/Mythkeeper/Content/playerSheetCropped.png","C:/Users/Finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/Content/playerSheetCropped.xnb","TextureProcessor","Texture2DContent",66806,828885,0.1584752
-"C:/Users/Finn/OneDrive/Mythkeeper/Content/rooms/mansion.jpg","C:/Users/Finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/Content/rooms/entrance.xnb","TextureProcessor","Texture2DContent",189619,5760085,0.1556864
+"C:/Users/finn/OneDrive/Mythkeeper/Content/mainFont.spritefont","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/Content/mainFont.xnb","FontDescriptionProcessor","SpriteFontContent",2016,21538,0.1232947
+"C:/Users/finn/OneDrive/Mythkeeper/Content/playerSheetCropped.png","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/Content/playerSheetCropped.xnb","TextureProcessor","Texture2DContent",66806,828885,0.0834208
+"C:/Users/finn/OneDrive/Mythkeeper/Content/rooms/mansion.jpg","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/Content/rooms/entrance.xnb","TextureProcessor","Texture2DContent",189619,5760085,0.0952108

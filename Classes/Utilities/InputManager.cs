@@ -10,7 +10,7 @@ using System.Text;
 
 namespace Mythkeeper {
 
-    class InputManager {
+    public class InputManager {
 
 
     }
