@@ -55,7 +55,7 @@ namespace Mythkeeper {
 
         string value = obj.UIval;
 
-        Console.WriteLine(value);
+        //Console.WriteLine(value);
 
 
 

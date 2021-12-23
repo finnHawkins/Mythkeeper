@@ -43,17 +43,16 @@ namespace Mythkeeper {
     private GraphicsDevice graphicsDevice;
     private Player player;
     private UIManager uiManager;
-
-
+    private Level currentLevel { get; set; }
+    private Level[] levelOrder;
+    private gameMode gameMode { get; set; }
+    private gameScreen gameState { get; set; }
 
     private int difficulty;
     private int obolsLeft;
     private TimeSpan lastSaved;
     private bool acceptInput;
-    private Level currentLevel { get; set; }
-    private Level[] levelOrder;
-    private gameMode gameMode { get; set; }
-    private gameScreen gameState { get; set; }
+   
 
     //Challenge mode vars
 
