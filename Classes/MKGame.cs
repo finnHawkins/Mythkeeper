@@ -28,7 +28,7 @@ namespace Mythkeeper {
 
     protected override void Initialize() {
 
-      mkGM = new GameManager(GraphicsDevice);
+      mkGM = new GameManager(GraphicsDevice, content);
 
       //Initialise new objects BEFORE this line
       base.Initialize();

@@ -16,17 +16,17 @@ namespace Mythkeeper {
     private GraphicsDevice graphicDevice;
 
 
-    public UIManager(GraphicsDevice gd) {
+    public UIManager(GraphicsDevice gd, ContentManager cm) {
 
       graphicDevice = gd;
-      content = MKGame.GetNewContentManagerInstance();
+      content = cm;
 
       UIObjects = new List<UIObject>();
 
-      UIObjects.Add(new UIButton(12, 12, 12, 12, "hello"));
-      UIObjects.Add(new UIText(12, 12, "stinky"));
-      UIObjects.Add(new UIBar(64, 64, 12, 12, "health"));
-      UIObjects.Add(new UIButton(12, 12, 12, 12, "beans"));
+      UIObjects.Add(new UIButton("hello", "hello", 12, 12, 12, 12, Color.White));
+      UIObjects.Add(new UIText("text", "Hello there", 64, 64, Color.Red));
+      UIObjects.Add(new UIBar("health", "", 64, 64, 12, 12, 100, 100, Color.White));
+      UIObjects.Add(new UIButton("beans", "beans", 12, 12, 12, 12, Color.White));
 
     }
 
@@ -35,17 +35,17 @@ namespace Mythkeeper {
       spriteBatch = new SpriteBatch(graphicDevice);
       spriteFont = content.Load<SpriteFont>("mainFont");
 
+      foreach (UIObject obj in UIObjects) {
+        obj.LoadContent(spriteFont, graphicDevice);
+      }
+
     }
 
     public void Draw() {
 
-      spriteBatch.Begin();
-      // Finds the center of the string in coordinates inside the text rectangle
-      Vector2 textMiddlePoint = spriteFont.MeasureString("hello world") / 2;
-      // Places text in center of the screen
-      Vector2 position = new Vector2(64,12);
-      spriteBatch.DrawString(spriteFont, "MonoGame Font Test", position, Color.White, 0, textMiddlePoint, 1.0f, SpriteEffects.None, 0.5f);
-      spriteBatch.End();
+      foreach (UIObject obj in UIObjects) {
+        obj.Draw();
+      }
 
     }
 
@@ -53,11 +53,11 @@ namespace Mythkeeper {
 
       foreach (UIObject obj in UIObjects) {
 
-        string value = obj.UIval;
+        if (obj.UItag == "timer") {
 
-        //Console.WriteLine(value);
+          obj.value = gameTime.ElapsedGameTime.TotalSeconds.ToString();
 
-
+        }
 
       }
 

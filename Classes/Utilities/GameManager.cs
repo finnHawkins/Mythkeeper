@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -43,6 +44,8 @@ namespace Mythkeeper {
     private GraphicsDevice graphicsDevice;
     private Player player;
     private UIManager uiManager;
+    public static ContentManager content;
+
     private Level currentLevel { get; set; }
     private Level[] levelOrder;
     private gameMode gameMode { get; set; }
@@ -58,14 +61,13 @@ namespace Mythkeeper {
 
     //Settings vars
 
-    public GameManager(GraphicsDevice gd) {
+    public GameManager(GraphicsDevice gd, ContentManager cm) {
 
       graphicsDevice = gd;
       player = new Player(gd);
       currentLevel = new Level(gd);
-      uiManager = new UIManager(gd);
-
-
+      uiManager = new UIManager(gd, cm);
+      content = cm;
 
       this.acceptInput = false;
     }
@@ -95,7 +97,8 @@ namespace Mythkeeper {
 
       if (acceptInput) {
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape)) {
-          Console.WriteLine("quit");
+          //save game
+          //quit game
         } else {
 
         }

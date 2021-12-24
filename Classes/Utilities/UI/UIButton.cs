@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -9,10 +10,16 @@ namespace Mythkeeper {
     private int width { get;set;}
     private int height { get;set;}
 
-    public UIButton(int w, int h, int x, int y, String val) : base(val, x, y) {
+    public UIButton(String UItag, String val, int w, int h, int x, int y, Color fontColour) : base(UItag, val, x, y, fontColour) {
 
       width = w;
       height = h;
+
+    }
+
+    public override void Draw() {
+
+
 
     }
 
