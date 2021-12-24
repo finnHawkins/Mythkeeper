@@ -34,7 +34,7 @@ namespace Mythkeeper {
         public void Draw(GameTime gameTime) {
 
             spriteBatch.Begin();
-            spriteBatch.Draw(background, mainScreen, Color.White);
+            //spriteBatch.Draw(background, mainScreen, Color.White);
             spriteBatch.End();
 
         }

@@ -23,10 +23,10 @@ namespace Mythkeeper {
 
       UIObjects = new List<UIObject>();
 
-      UIObjects.Add(new UIButton("hello", "hello", 12, 12, 12, 12, Color.White));
-      UIObjects.Add(new UIText("text", "Hello there", 64, 64, Color.Red));
+      UIObjects.Add(new UIButton("hello", "hello", 36, 36, Color.White));
+      //UIObjects.Add(new UIText("text", "Hello there", 64, 64, Color.Red));
       UIObjects.Add(new UIBar("health", "", 64, 64, 12, 12, 100, 100, Color.White));
-      UIObjects.Add(new UIButton("beans", "beans", 12, 12, 12, 12, Color.White));
+      UIObjects.Add(new UIButton("beans", "beans", 200,20, Color.White));
 
     }
 

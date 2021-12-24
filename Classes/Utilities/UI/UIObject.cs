@@ -10,25 +10,49 @@ namespace Mythkeeper {
   public abstract class UIObject {
 
     /// <summary>
-    ///  values <c>health</c>, <c>stamina</c>, <c>essence</c> (may be changed in future),<c>progress</c>
-    ///  are reserved for UIBars containing the amount of each one the player has. <c>timer</c> is reserved
-    ///  for the speedrun timer.
+    /// Reserved values: <c>health</c>, <c>stamina</c>, <c>essence</c>,<c>progress</c>,
+    /// <c>timer</c>, <c>obols</c>.
+    /// Stores a string value to identify it from other UI elements.
     /// </summary>
     public string UItag { get; set; }
+
+    /// <summary>
+    /// Value to be displayed on-screen.
+    /// </summary>
     public string value { get; set; }
+
+    /// <summary>
+    /// X co-ordinate of element.
+    /// </summary>
     public float x { get; set; }
+
+    /// <summary>
+    /// Y co-ordinate of element.
+    /// </summary>
     public float y { get; set; }
+
+    /// <summary>
+    /// Scale of element.
+    /// </summary>
     public float scale { get; set; }
 
     /// <summary>
-    /// stores the fonts and spritebatch required to draw text
+    /// Stores the font required to draw text.
     /// </summary>
     public SpriteFont font { get; set; }
+
+    /// <summary>
+    /// Stores the spritebatch required to draw element/text.
+    /// </summary>
     public SpriteBatch spriteBatch;
+
+    /// <summary>
+    /// Stores the font colour.
+    /// </summary>
     public Color fontColour;
 
     /// <summary>
-    /// Creates a generic UI object
+    /// Creates a generic UI object.
     /// </summary>
     /// <param name="UItag">Identifier for the UI element.</param>
     /// <param name="val">Value to be displayed on element.</param>
@@ -48,19 +72,14 @@ namespace Mythkeeper {
     }
 
     /// <summary>
-    /// Loads the required content so the UI element can be draw
+    /// Loads the required content so the UI element can be drawn.
     /// </summary>
-    /// <param name="sf">Spritefont to be used for drawing text</param>
-    /// <param name="gd">graphics device to allow creation of a new spritebatch</param>
-    public void LoadContent(SpriteFont sf, GraphicsDevice gd) {
-
-      spriteBatch = new SpriteBatch(gd);
-      font = sf;
-
-    }
+    /// <param name="sf">Spritefont to be used for drawing text.</param>
+    /// <param name="gd">Graphics device to allow creation of a new spritebatch.</param>
+    public abstract void LoadContent(SpriteFont sf, GraphicsDevice gd);
 
     /// <summary>
-    /// Draws the UI element to the screen
+    /// Draws the UI element to the screen.
     /// </summary>
     public abstract void Draw();
 

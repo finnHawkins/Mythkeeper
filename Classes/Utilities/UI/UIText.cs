@@ -8,14 +8,26 @@ namespace Mythkeeper {
   public class UIText : UIObject {
 
     /// <summary>
-    /// Constructor for UI text element
+    /// Constructor for UI text element.
     /// </summary>
     /// <param name="UItag">Identifier for text element, e.g. <c>timer</c> or <c>score</c>.</param>
-    /// <param name="val">Actual value to be shown by text, e.g. Score: 100</param>
+    /// <param name="val">Actual value to be shown by text, e.g. Score: 100.</param>
     /// <param name="x">X coordinate of element.</param>
     /// <param name="y">Y coordinate of element.</param>
     /// <param name="fontColour">Text colour.</param>
     public UIText(String UItag, String val, int x, int y, Color fontColour) : base(UItag, val, x, y, fontColour) {
+
+    }
+
+    /// <summary>
+    /// Loads the required content so the UI element can be drawn.
+    /// </summary>
+    /// <param name="sf">Spritefont to be used for drawing text.</param>
+    /// <param name="gd">Graphics device to allow creation of a new spritebatch.</param>
+    public override void LoadContent(SpriteFont sf, GraphicsDevice gd) {
+
+      spriteBatch = new SpriteBatch(gd);
+      font = sf;
 
     }
 
