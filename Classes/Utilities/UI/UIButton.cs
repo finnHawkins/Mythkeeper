@@ -15,11 +15,11 @@ namespace Mythkeeper {
     private Texture2D btnImg;
     private readonly ContentManager content;
 
-    public UIButton(String UItag, String val, int x, int y, Color fontColour, int w = 184, int h = 28) : base(UItag, val, x, y, fontColour) {
+    public UIButton(String UItag, String val, int x, int y, Color fontColour, ContentManager cm, int w = 100, int h = 28) : base(UItag, val, x, y, fontColour) {
 
       width = w;
       height = h;
-      content = MKGame.GetNewContentManagerInstance();
+      content = cm;
 
     }
 

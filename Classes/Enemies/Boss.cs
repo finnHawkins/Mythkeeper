@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Mythkeeper {
-    class Boss {
+    abstract class Boss {
+
+
+
+
+
+
+
     }
 }

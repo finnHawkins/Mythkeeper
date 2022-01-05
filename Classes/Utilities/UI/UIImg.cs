@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -18,16 +19,16 @@ namespace Mythkeeper {
     private int height { get; set; }
 
     /// <summary>
-    /// Whether the text value should be shown alongside image
-    /// </summary>
-    private bool showVal { get; set; }
-
-    /// <summary>
     /// Where in relation to the image the text should be
     /// if the image is the centre in a 3x3 grid.
     /// Set to 0 if showVal is false.
     /// </summary>
     private int textPosition { get; set; }
+
+    private string imgLocation { get; set; }
+    private Texture2D img { get; set; }
+
+    private readonly ContentManager content;
     
     /// <summary>
     /// 
@@ -38,13 +39,14 @@ namespace Mythkeeper {
     /// <param name="h"></param>
     /// <param name="x"></param>
     /// <param name="y"></param>
-    /// <param name="showVal"></param>
     /// <param name="fontColour"></param>
-    public UIImg(String UItag, String val, int w, int h, int x, int y, bool showVal, Color fontColour) : base(UItag, val, x, y, fontColour) {
+    public UIImg(String UItag, String val, int w, int h, int x, int y, Color fontColour, string textureLocation, ContentManager cm) : base(UItag, val, x, y, fontColour) {
 
-      this.showVal = showVal;
       width = w;
       height = h;
+      imgLocation = textureLocation;
+      content = cm;
+
 
     }
 
@@ -58,9 +60,20 @@ namespace Mythkeeper {
       spriteBatch = new SpriteBatch(gd);
       font = sf;
 
+      img = content.Load<Texture2D>(imgLocation);
+      
+
     }
 
     public override void Draw() {
+
+      spriteBatch.Begin();
+
+      Rectangle pos = new Rectangle((int)x, (int)y, width, height);
+
+      spriteBatch.Draw(img, pos, Color.White);
+
+      spriteBatch.End();
 
     }
 

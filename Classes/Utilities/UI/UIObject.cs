@@ -71,6 +71,15 @@ namespace Mythkeeper {
 
     }
 
+    public UIObject(string UItag, float x, float y, float scale = 1f) {
+
+      this.UItag = UItag;
+      this.x = x;
+      this.y = y;
+      this.scale = scale;
+
+    }
+
     /// <summary>
     /// Loads the required content so the UI element can be drawn.
     /// </summary>

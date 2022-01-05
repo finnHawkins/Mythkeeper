@@ -30,6 +30,11 @@ namespace Mythkeeper {
 
       mkGM = new GameManager(GraphicsDevice, content);
 
+      //gdm.PreferredBackBufferWidth = GraphicsDevice.DisplayMode.Width;
+      //gdm.PreferredBackBufferHeight = GraphicsDevice.DisplayMode.Height;
+      //gdm.IsFullScreen = true;
+      gdm.ApplyChanges();
+
       //Initialise new objects BEFORE this line
       base.Initialize();
 
