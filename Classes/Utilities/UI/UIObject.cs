@@ -42,11 +42,6 @@ namespace Mythkeeper {
     public SpriteFont font { get; set; }
 
     /// <summary>
-    /// Stores the spritebatch required to draw element/text.
-    /// </summary>
-    public SpriteBatch spriteBatch;
-
-    /// <summary>
     /// Stores the font colour.
     /// </summary>
     public Color fontColour;
@@ -84,13 +79,13 @@ namespace Mythkeeper {
     /// Loads the required content so the UI element can be drawn.
     /// </summary>
     /// <param name="sf">Spritefont to be used for drawing text.</param>
-    /// <param name="gd">Graphics device to allow creation of a new spritebatch.</param>
+    public abstract void LoadContent(SpriteFont sf);
     public abstract void LoadContent(SpriteFont sf, GraphicsDevice gd);
 
     /// <summary>
     /// Draws the UI element to the screen.
     /// </summary>
-    public abstract void Draw();
+    public abstract void Draw(SpriteBatch spriteBatch);
 
   }
 }

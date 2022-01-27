@@ -54,18 +54,24 @@ namespace Mythkeeper {
     /// Loads the required content so the UI element can be drawn.
     /// </summary>
     /// <param name="sf">Spritefont to be used for drawing text.</param>
-    /// <param name="gd">Graphics device to allow creation of a new spritebatch.</param>
-    public override void LoadContent(SpriteFont sf, GraphicsDevice gd) {
+    public override void LoadContent(SpriteFont sf) {
 
-      spriteBatch = new SpriteBatch(gd);
       font = sf;
 
       img = content.Load<Texture2D>(imgLocation);
-      
 
     }
 
-    public override void Draw() {
+    /// <summary>
+    /// Loads the required content so the UI element can be drawn.
+    /// </summary>
+    /// <param name="sf">Spritefont to be used for drawing text.</param>
+    /// <param name="gd">Graphics device to allow creation of a new spritebatch.</param>
+    public override void LoadContent(SpriteFont sf, GraphicsDevice gd) {
+      Console.WriteLine(UItag + ": wrong LoadContent call, dickhead");
+    }
+
+    public override void Draw(SpriteBatch spriteBatch) {
 
       spriteBatch.Begin();
 

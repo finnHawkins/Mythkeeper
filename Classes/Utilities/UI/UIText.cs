@@ -23,18 +23,25 @@ namespace Mythkeeper {
     /// Loads the required content so the UI element can be drawn.
     /// </summary>
     /// <param name="sf">Spritefont to be used for drawing text.</param>
-    /// <param name="gd">Graphics device to allow creation of a new spritebatch.</param>
-    public override void LoadContent(SpriteFont sf, GraphicsDevice gd) {
+    public override void LoadContent(SpriteFont sf) {
 
-      spriteBatch = new SpriteBatch(gd);
       font = sf;
 
     }
 
     /// <summary>
+    /// Loads the required content so the UI element can be drawn.
+    /// </summary>
+    /// <param name="sf">Spritefont to be used for drawing text.</param>
+    /// <param name="gd">Graphics device to allow creation of a new spritebatch.</param>
+    public override void LoadContent(SpriteFont sf, GraphicsDevice gd) {
+      Console.WriteLine(UItag + ": wrong LoadContent call, dickhead");
+    }
+
+    /// <summary>
     /// Draws the text element at the position provided by parameters.
     /// </summary>
-    public override void Draw() {
+    public override void Draw(SpriteBatch spriteBatch) {
 
       spriteBatch.Begin();
       Vector2 position = new Vector2(x, y);
