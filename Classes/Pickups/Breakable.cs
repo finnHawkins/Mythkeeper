@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Mythkeeper {
-    class Breakable {
+    abstract class Breakable {
+
+
+
+
     }
 }

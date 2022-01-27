@@ -24,13 +24,14 @@ namespace Mythkeeper {
       UIObjects = new List<UIObject>();
 
       //UIObjects.Add(new UIButton("hello", "hello", 36, 36, Color.White, content));
-      //UIObjects.Add(new UIText("text", "Hello there", 64, 64, Color.DarkOrchid));
+      UIObjects.Add(new UIText("timer", "", graphicDevice.Viewport.Width - 125, graphicDevice.Viewport.Y, Color.DarkOrchid));
+      UIObjects.Add(new UIText("score", "Score: 0", graphicDevice.Viewport.Width - 125, graphicDevice.Viewport.Y + 15, Color.DarkOrchid));
       UIObjects.Add(new UIBar("health", 150, 15, 0, 5, 100, 92, false, Color.Crimson));
-      UIObjects.Add(new UIBar("stamina", 150, 15, 0, 22, 100, 100, false, Color.ForestGreen));
-      UIObjects.Add(new UIBar("progress", 15, 150, 5, 80, 100, 75, true, Color.Honeydew));
+      UIObjects.Add(new UIBar("stamina", 150, 15, 0, 22, 100, 100, false, Color.SeaGreen));
+      UIObjects.Add(new UIBar("progress", 15, 150, graphicDevice.Viewport.Width - 20, 90, 100, 75, true, Color.Honeydew));
+      UIObjects.Add(new UIImg("essence", 35, 35, 0, 45, "UI\\essence", content));
+      UIObjects.Add(new UIImg("obols", 35, 35, 155, 5, "UI\\obol", content));
 
-      //UIObjects.Add(new UIButton("beans", "beans", 200,20, Color.White, content));
-      UIObjects.Add(new UIImg("obols", "", 35, 35, 0, 40, Color.White, "UI\\obol", content));
 
 
     }
@@ -56,16 +57,6 @@ namespace Mythkeeper {
 
     public void Update(GameTime gameTime) {
 
-      foreach (UIObject obj in UIObjects) {
-
-        if (obj.UItag == "timer") {
-
-          obj.value = gameTime.ElapsedGameTime.TotalSeconds.ToString();
-
-        }
-
-      }
-
     }
 
     public UIBar getBarByTag(string tag) {
@@ -76,6 +67,9 @@ namespace Mythkeeper {
 
     }
 
-
+    public UIText getTimer() {
+      return (UIText)UIObjects.Find(x => x.UItag == "timer");
     }
+
   }
+}

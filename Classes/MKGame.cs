@@ -52,7 +52,7 @@ namespace Mythkeeper {
     protected override void Update(GameTime gameTime) {
 
       base.Update(gameTime);
-      mkGM.Update(gameTime);
+      mkGM.Update(gameTime, this);
 
 
       frameRate = 1 / (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -80,10 +80,8 @@ namespace Mythkeeper {
       return temp;
     }
 
-    public static ContentManager GetMainContentManager() {
-
-      return content;
-
+    public void endGame() {
+      this.Exit();
     }
 
   }

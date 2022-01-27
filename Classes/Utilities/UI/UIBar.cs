@@ -42,7 +42,11 @@ namespace Mythkeeper {
 
 
       Color[] data = new Color[width * height];
-      for (int i = 0; i < data.Length; ++i) data[i] = Color.Silver;
+      if (UItag == "progress") {
+        for (int i = 0; i < data.Length; ++i) data[i] = Color.DimGray;
+      } else {
+        for (int i = 0; i < data.Length; ++i) data[i] = Color.Silver;
+      }
       emptyBar.SetData(data);
 
       for (int i = 0; i < data.Length; ++i) data[i] = color;

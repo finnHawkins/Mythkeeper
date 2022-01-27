@@ -40,7 +40,7 @@ namespace Mythkeeper {
     /// <param name="x"></param>
     /// <param name="y"></param>
     /// <param name="fontColour"></param>
-    public UIImg(String UItag, String val, int w, int h, int x, int y, Color fontColour, string textureLocation, ContentManager cm) : base(UItag, val, x, y, fontColour) {
+    public UIImg(String UItag, int w, int h, int x, int y, string textureLocation, ContentManager cm) : base(UItag, x, y) {
 
       width = w;
       height = h;

@@ -23,6 +23,7 @@ namespace Mythkeeper {
   /// List of game states
   /// </summary>
   public enum gameScreen {
+    splashScreen,
     title,
     mainMenu,
     saveFile,
@@ -48,14 +49,14 @@ namespace Mythkeeper {
 
     private Level currentLevel { get; set; }
     private Level[] levelOrder;
-    private gameMode gameMode { get; set; }
-    private gameScreen gameState { get; set; }
 
     private int difficulty;
     private int obolsLeft;
     private TimeSpan lastSaved;
+    private float timer;
     private bool acceptInput;
-   
+    private gameScreen gameScreen;
+    private gameMode gameMode;
 
     //Challenge mode vars
 
@@ -69,7 +70,9 @@ namespace Mythkeeper {
       uiManager = new UIManager(gd, cm);
       content = cm;
 
-      this.acceptInput = false;
+      gameScreen = gameScreen.splashScreen;
+      
+      //this.acceptInput = false;
     }
 
     public void LoadContent() {
@@ -89,23 +92,48 @@ namespace Mythkeeper {
 
     }
 
-    public void Update(GameTime gameTime) {
+    public void Update(GameTime gameTime, MKGame game) {
 
       player.Update(gameTime);
       uiManager.Update(gameTime);
 
+      UIText timer = uiManager.getTimer();
+      timer.value = gameTime.TotalGameTime.ToString();
 
-      if (acceptInput) {
-        if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape)) {
-          //save game
-          //quit game
+      if (gameScreen == gameScreen.splashScreen) {
+
+        if (gameTime.TotalGameTime.TotalSeconds >= 5) {
+
+          gameScreen = gameScreen.title;
+
         } else {
+
+          if (Keyboard.GetState().IsKeyDown(Keys.Space)) {
+
+            this.timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            if (this.timer >= 1.25) {
+              Console.WriteLine("skipped cutscene");
+              gameScreen = gameScreen.title;
+              this.timer = 0;
+            }
+
+          } else {
+            this.timer = 0;
+          }
 
         }
 
-      } else {
+        if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape)) {
+          //save game
+          //quit game
+          game.endGame();
 
-        showSplashAnimation(gameTime);
+        } else {
+
+          showSplashAnimation(gameTime);
+
+        }
 
       }
 
