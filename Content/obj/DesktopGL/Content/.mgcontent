@@ -4,13 +4,27 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/finn/OneDrive/Mythkeeper/Content/mainFont.spritefont</File>
     <File>C:/Users/finn/OneDrive/Mythkeeper/Content/playerSheetCropped.png</File>
+    <File>C:/Users/finn/OneDrive/Mythkeeper/Content/rooms/castledoors.jpg</File>
+    <File>C:/Users/finn/OneDrive/Mythkeeper/Content/rooms/castleWall.jpg</File>
     <File>C:/Users/finn/OneDrive/Mythkeeper/Content/rooms/mansion.jpg</File>
+    <File>C:/Users/finn/OneDrive/Mythkeeper/Content/rooms/splashscreen.jpg</File>
+    <File>C:/Users/finn/OneDrive/Mythkeeper/Content/UI/btn.png</File>
+    <File>C:/Users/finn/OneDrive/Mythkeeper/Content/UI/btnPressed.png</File>
+    <File>C:/Users/finn/OneDrive/Mythkeeper/Content/UI/essence.png</File>
+    <File>C:/Users/finn/OneDrive/Mythkeeper/Content/UI/mainFont.spritefont</File>
+    <File>C:/Users/finn/OneDrive/Mythkeeper/Content/UI/obol.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />
     <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File>rooms/entrance.jpg</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>

@@ -1,4 +1,11 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"C:/Users/finn/OneDrive/Mythkeeper/Content/mainFont.spritefont","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/Content/mainFont.xnb","FontDescriptionProcessor","SpriteFontContent",2016,21538,0.1232947
-"C:/Users/finn/OneDrive/Mythkeeper/Content/playerSheetCropped.png","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/Content/playerSheetCropped.xnb","TextureProcessor","Texture2DContent",66806,828885,0.0834208
-"C:/Users/finn/OneDrive/Mythkeeper/Content/rooms/mansion.jpg","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/Content/rooms/entrance.xnb","TextureProcessor","Texture2DContent",189619,5760085,0.0952108
+"C:/Users/finn/OneDrive/Mythkeeper/Content/playerSheetCropped.png","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/Content/playerSheetCropped.xnb","TextureProcessor","Texture2DContent",66806,828885,0.0811448
+"C:/Users/finn/OneDrive/Mythkeeper/Content/rooms/castledoors.jpg","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/Content/rooms/castledoors.xnb","TextureProcessor","Texture2DContent",455859,3240021,0.0550892
+"C:/Users/finn/OneDrive/Mythkeeper/Content/rooms/castleWall.jpg","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/Content/rooms/castleWall.xnb","TextureProcessor","Texture2DContent",251530,3000085,0.0460128
+"C:/Users/finn/OneDrive/Mythkeeper/Content/rooms/mansion.jpg","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/Content/rooms/entrance.xnb","TextureProcessor","Texture2DContent",189619,5760085,0.0863577
+"C:/Users/finn/OneDrive/Mythkeeper/Content/rooms/splashscreen.jpg","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/Content/rooms/splashscreen.xnb","TextureProcessor","Texture2DContent",95111,1705685,0.0319065
+"C:/Users/finn/OneDrive/Mythkeeper/Content/UI/btn.png","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/Content/UI/btn.xnb","TextureProcessor","Texture2DContent",166,2425,0.0695839
+"C:/Users/finn/OneDrive/Mythkeeper/Content/UI/btnPressed.png","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/Content/UI/btnPressed.xnb","TextureProcessor","Texture2DContent",278,2965,0.0008423
+"C:/Users/finn/OneDrive/Mythkeeper/Content/UI/essence.png","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/Content/UI/essence.xnb","TextureProcessor","Texture2DContent",10455,625885,0.0151472
+"C:/Users/finn/OneDrive/Mythkeeper/Content/UI/mainFont.spritefont","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/Content/UI/mainFont.xnb","FontDescriptionProcessor","SpriteFontContent",2076,267298,0.1228837
+"C:/Users/finn/OneDrive/Mythkeeper/Content/UI/obol.png","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/Content/UI/obol.xnb","TextureProcessor","Texture2DContent",150959,409685,0.0070081

@@ -135,28 +135,28 @@ namespace Mythkeeper {
 
       if (spriteQueue.Count == 1) {
 
-        if (kbState.IsKeyDown(Keys.W) || kbState.IsKeyDown(Keys.Up)) {
+        if (kbState.IsKeyDown(Keys.W) || kbState.IsKeyDown(Keys.Up) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.LeftThumbstickUp)) {
           spriteQueue.Add("runAnim");
           spriteQueue.RemoveAt(0);
           pPos.Y -= playerSpeed;
           isMoving = true;
         }
 
-        if (kbState.IsKeyDown(Keys.S) || kbState.IsKeyDown(Keys.Down)) {
+        if (kbState.IsKeyDown(Keys.S) || kbState.IsKeyDown(Keys.Down) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.LeftThumbstickDown)) {
           spriteQueue.Add("runAnim");
           spriteQueue.RemoveAt(0);
           pPos.Y += playerSpeed;
           isMoving = true;
         }
 
-        if (kbState.IsKeyDown(Keys.A) || kbState.IsKeyDown(Keys.Left)) {
+        if (kbState.IsKeyDown(Keys.A) || kbState.IsKeyDown(Keys.Left) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.LeftThumbstickLeft)) {
           spriteQueue.Add("runAnim");
           spriteQueue.RemoveAt(0);
           pPos.X -= playerSpeed;
           isMoving = true;
         }
 
-        if (kbState.IsKeyDown(Keys.D) || kbState.IsKeyDown(Keys.Right)) {
+        if (kbState.IsKeyDown(Keys.D) || kbState.IsKeyDown(Keys.Right) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.LeftThumbstickRight)) {
           spriteQueue.Add("runAnim");
           spriteQueue.RemoveAt(0);
           pPos.X += playerSpeed;

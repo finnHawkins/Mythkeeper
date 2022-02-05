@@ -22,13 +22,13 @@ namespace Mythkeeper {
 
       gdm = new GraphicsDeviceManager(this);
       Content.RootDirectory = "Content";
-      this.IsMouseVisible = true;
+      this.IsMouseVisible = false;
       content = Content;
     }
 
     protected override void Initialize() {
 
-      mkGM = new GameManager(GraphicsDevice, content);
+      mkGM = new GameManager(GraphicsDevice, content, this);
 
       //gdm.PreferredBackBufferWidth = GraphicsDevice.DisplayMode.Width;
       //gdm.PreferredBackBufferHeight = GraphicsDevice.DisplayMode.Height;
@@ -52,7 +52,7 @@ namespace Mythkeeper {
     protected override void Update(GameTime gameTime) {
 
       base.Update(gameTime);
-      mkGM.Update(gameTime, this);
+      mkGM.Update(gameTime);
 
 
       frameRate = 1 / (float)gameTime.ElapsedGameTime.TotalSeconds;

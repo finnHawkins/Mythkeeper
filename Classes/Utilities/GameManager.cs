@@ -29,9 +29,7 @@ namespace Mythkeeper {
     saveFile,
     levelScreen,
     mainSetting,
-    inputSettings,
-    audioSettings, // - this might just be able to be a volume slider on the main settings screen
-    graphicsSettings, // - this might just be able to be a resolution dropdown picker on the main settings screen
+    keybindDisplay,
     credits,
     pauseMenu,
     loading,
@@ -41,13 +39,14 @@ namespace Mythkeeper {
   /// <summary>
   /// Game Manager class
   /// </summary>
-  class GameManager {
+  public class GameManager {
 
     private GraphicsDevice graphicsDevice;
     private Player player;
     public static ContentManager content;
+    private MKGame game;
 
-    private Level currentLevel { get; set; }
+    private Level currentLevel;
     private Level[] levelOrder;
 
     private int difficulty;
@@ -56,9 +55,11 @@ namespace Mythkeeper {
     private float timer;
     private bool displayTimer;
     private bool displayScore;
+    private int saveFileNo;
 
     private gameScreen gameScreen;
     private gameMode gameMode;
+    protected Screen screen;
 
     private SpriteBatch spriteBatch;
     private SpriteFont spriteFont;
@@ -74,12 +75,13 @@ namespace Mythkeeper {
     UIImg essence;
     UIImg obols;
 
-    public GameManager(GraphicsDevice gd, ContentManager cm) {
+    public GameManager(GraphicsDevice gd, ContentManager cm, MKGame game) {
 
       graphicsDevice = gd;
       player = new Player(gd);
       currentLevel = new Level(gd);
       content = cm;
+      this.game = game;
 
       gameScreen = gameScreen.splashScreen;
       gameMode = gameMode.normal;
@@ -90,12 +92,14 @@ namespace Mythkeeper {
       essence = new UIImg("essence", 35, 35, 0, 45, "UI\\essence", content);
       obols = new UIImg("obols", 35, 35, 155, 5, "UI\\obol", content);
 
+      screen = new SplashScreen("rooms\\splashscreen", graphicsDevice, content, this);
+
     }
 
     public void LoadContent() {
 
       spriteBatch = new SpriteBatch(graphicsDevice);
-      spriteFont = content.Load<SpriteFont>("mainFont");
+      spriteFont = content.Load<SpriteFont>("UI\\mainFont");
 
       //UIBar is the only class that needs a graphicsDevice parameter, the rest only need a spritefont
       gameTimer.LoadContent(spriteFont);
@@ -104,15 +108,17 @@ namespace Mythkeeper {
       essence.LoadContent(spriteFont);
       obols.LoadContent(spriteFont);
 
-
-      currentLevel.LoadContent();
+      screen.LoadContent();
+      //currentLevel.LoadContent();
       player.LoadContent();
 
     }
 
     public void Draw(GameTime gt) {
 
-      currentLevel.Draw(gt);
+
+      screen.Draw(gt);
+     // currentLevel.Draw(gt);
 
       if (displayTimer) {
         gameTimer.Draw(spriteBatch);
@@ -128,49 +134,41 @@ namespace Mythkeeper {
         case gameMode.timed:
         case gameMode.corruption:
           //progress.Draw(spriteBatch);
-          essence.Draw(spriteBatch);
-          obols.Draw(spriteBatch);
+          //essence.Draw(spriteBatch);
+          //obols.Draw(spriteBatch);
+          //player.Draw();
+
           break;
         case gameMode.hardcore:
           //progress.Draw(spriteBatch);
-          essence.Draw(spriteBatch);
+          //essence.Draw(spriteBatch);
+          //player.Draw();
           break;
 
-      }
-
-      if (gameScreen == gameScreen.splashScreen && Keyboard.GetState().IsKeyDown(Keys.Space)) {
-        progress.Draw(spriteBatch);
-      } else {
 
       }
-
-      player.Draw();
 
     }
 
-    public void Update(GameTime gameTime, MKGame game) {
+    public void Update(GameTime gameTime) {
 
       switch (gameScreen) {
         case gameScreen.splashScreen:
-          showSplashAnimation(gameTime);
-          break;
         case gameScreen.title:
-          break;
         case gameScreen.mainMenu:
+        case gameScreen.credits:
+
+          screen.Update(gameTime);
           break;
         case gameScreen.saveFile:
           break;
         case gameScreen.levelScreen:
+          player.Update(gameTime);
+          gameTimer.value = gameTime.TotalGameTime.ToString();
           break;
         case gameScreen.mainSetting:
           break;
-        case gameScreen.inputSettings:
-          break;
-        case gameScreen.audioSettings:
-          break;
-        case gameScreen.graphicsSettings:
-          break;
-        case gameScreen.credits:
+        case gameScreen.keybindDisplay:
           break;
         case gameScreen.pauseMenu:
           break;
@@ -180,17 +178,6 @@ namespace Mythkeeper {
           break;
       }
 
-      if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape)) {
-        //save game
-        //quit game
-        game.endGame();
-
-      }
-
-      player.Update(gameTime);
-
-      gameTimer.value = gameTime.TotalGameTime.ToString();
-
     }
     private void generateLevels() {
 
@@ -199,33 +186,48 @@ namespace Mythkeeper {
 
     }
 
-    private void showSplashAnimation(GameTime gameTime) {
+    public void changeScreen(gameScreen gameScreen) {
 
-      if (gameTime.TotalGameTime.TotalSeconds >= 5) {
+      this.gameScreen = gameScreen;
 
-        gameScreen = gameScreen.title;
-        Console.WriteLine("cutscene ended");
+      switch (gameScreen) {
+        case gameScreen.title:
+          screen = new TitleScreen("rooms\\castledoors", graphicsDevice, content, this);
+          screen.LoadContent();
+          break;
+        case gameScreen.mainMenu:
+          screen = new MainMenu("rooms\\mansion", graphicsDevice, content, this);
+          screen.LoadContent();
+          break;
+        case gameScreen.saveFile:
+          Console.WriteLine("loading save file screen...");
 
-      } else {
+          break;
+        case gameScreen.levelScreen:
+          Console.WriteLine("loading game screen...");
+          break;
+        case gameScreen.mainSetting:
+          Console.WriteLine("loading settings screen...");
 
-        if (Keyboard.GetState().IsKeyDown(Keys.Space)) {
-
-          this.timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-          progress.setMaxVal(1.25);
-          progress.setCurrentVal(timer);
-
-          if (this.timer >= 1.25) {
-            Console.WriteLine("skipped cutscene");
-            gameScreen = gameScreen.title;
-            this.timer = 0;
-          }
-
-        } else {
-          this.timer = 0;
-        }
-
-
+          break;
+        case gameScreen.keybindDisplay:
+          break;
+        case gameScreen.credits:
+          Console.WriteLine("loading credits screen...");
+          screen = new CreditScreen("rooms\\castleWall", graphicsDevice, content, this);
+          screen.LoadContent();
+          break;
+        case gameScreen.pauseMenu:
+          break;
+        case gameScreen.loading:
+          break;
+        case gameScreen.death:
+          break;
       }
+    }
+
+    public void quit() {
+      game.endGame();
 
     }
   }

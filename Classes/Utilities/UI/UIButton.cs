@@ -10,18 +10,24 @@ namespace Mythkeeper {
 
   public class UIButton : UIObject {
 
+    public event EventHandler ButtonClicked;
+
+    private bool selected;
+
     private int width { get;set;}
     private int height { get;set;}
 
     private Texture2D btnImg;
+    private Texture2D btnPressedImg;
     private Rectangle position;
     private readonly ContentManager content;
 
-    public UIButton(String UItag, String val, int x, int y, Color fontColour, ContentManager cm, int w = 100, int h = 28) : base(UItag, val, x, y, fontColour) {
+    public UIButton(String UItag, String val, int x, int y, Color fontColour, ContentManager cm, int w = 200, int h = 50) : base(UItag, val, x, y, fontColour) {
 
       width = w;
       height = h;
       content = cm;
+      selected = false;
 
     }
     /// <summary>
@@ -32,6 +38,7 @@ namespace Mythkeeper {
 
       font = sf;
       btnImg = content.Load<Texture2D>("UI\\btn");
+      btnPressedImg = content.Load<Texture2D>("UI\\btnPressed");
 
       position = new Rectangle((int)x, (int)y, width, height);
 
@@ -51,9 +58,14 @@ namespace Mythkeeper {
       spriteBatch.Begin();
 
       Vector2 fontVector = font.MeasureString(value);
-      Vector2 txtPos = new Vector2(x + ((width / 2) - (fontVector.X / 2)), y + (height - (fontVector.Y)));
+      Vector2 txtPos = new Vector2(x + ((width / 2) - (fontVector.X / 2)), y + ((height / 2) - (fontVector.Y / 2)));
 
-      spriteBatch.Draw(btnImg, position, Color.White);
+      if (selected) {
+        spriteBatch.Draw(btnPressedImg, position, Color.White);
+      } else {
+        spriteBatch.Draw(btnImg, position, Color.White);
+      }
+
       spriteBatch.DrawString(font, value, txtPos, fontColour);
 
       spriteBatch.End();
@@ -62,22 +74,31 @@ namespace Mythkeeper {
 
     public void Update() {
 
-      var mouseState = Mouse.GetState();
+      //var mouseState = Mouse.GetState();
 
-      var mouseLoc = new Point(mouseState.X, mouseState.Y);
+      //var mouseLoc = new Point(mouseState.X, mouseState.Y);
 
-      if(position.Contains(mouseLoc)) {
+      //if(position.Contains(mouseLoc)) {
 
-        Console.WriteLine("MOUSE OVER BUTTON " + UItag);
+      //  if(mouseState.LeftButton == ButtonState.Pressed)
 
+      //  Console.WriteLine("MOUSE OVER BUTTON " + UItag);
+
+      //}
+
+      if (selected) {
+        if (Keyboard.GetState().IsKeyDown(Keys.Space)) {
+          var ev = ButtonClicked;
+          if (ev != null) {
+            ev(this, EventArgs.Empty);
+          }
+        }
       }
 
     }
 
-    public void Click() {
-
-
-
+    public void toggleSelect() {
+      selected = !selected;
     }
 
   }
