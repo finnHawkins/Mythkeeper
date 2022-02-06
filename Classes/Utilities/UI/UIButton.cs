@@ -12,8 +12,6 @@ namespace Mythkeeper {
 
     public event EventHandler ButtonClicked;
 
-    private bool selected;
-
     private int width { get;set;}
     private int height { get;set;}
 
@@ -74,18 +72,6 @@ namespace Mythkeeper {
 
     public void Update() {
 
-      //var mouseState = Mouse.GetState();
-
-      //var mouseLoc = new Point(mouseState.X, mouseState.Y);
-
-      //if(position.Contains(mouseLoc)) {
-
-      //  if(mouseState.LeftButton == ButtonState.Pressed)
-
-      //  Console.WriteLine("MOUSE OVER BUTTON " + UItag);
-
-      //}
-
       if (selected) {
         if (Keyboard.GetState().IsKeyDown(Keys.Space)) {
           var ev = ButtonClicked;
@@ -95,10 +81,6 @@ namespace Mythkeeper {
         }
       }
 
-    }
-
-    public void toggleSelect() {
-      selected = !selected;
     }
 
   }

@@ -23,7 +23,7 @@ namespace Mythkeeper {
       int sbY = (int)((int)gd.Viewport.Height - (sbHeight * 2));
 
       skipCutsceneBar = new UIBar("skipCS", sbWidth, sbHeight, sbX, sbY, SKIP_TIME, 0, false, Color.Honeydew);
-      skipText = new UIText("skipTag", "Hold space to skip cutscene", 0, (sbY - 25), Color.Black);
+      skipText = new UIText("skipTag", "Hold space to skip cutscene", 0, (sbY - 50), Color.Honeydew, true);
     }
 
     public override void Draw(GameTime gameTime) {
@@ -40,18 +40,12 @@ namespace Mythkeeper {
 
     public override void LoadContent() {
 
-      spriteFont = content.Load<SpriteFont>("mainFont");
-
       spriteBatch = new SpriteBatch(graphicsDevice);
       background = content.Load<Texture2D>(bgImg);
       mainScreen = new Rectangle(0, 0, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height);
 
       skipCutsceneBar.LoadContent(spriteFont, graphicsDevice);
-      skipText.LoadContent(spriteFont);
-
-      Vector2 fontVector = spriteFont.MeasureString(skipText.value);
-      skipText.x = (graphicsDevice.Viewport.Width / 2) - (fontVector.X / 2);
-
+      skipText.LoadContent(spriteFont, graphicsDevice);
 
     }
 

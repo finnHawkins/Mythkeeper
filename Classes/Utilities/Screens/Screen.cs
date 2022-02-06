@@ -27,8 +27,10 @@ namespace Mythkeeper {
       content = cm;
       gameManager = gm;
 
+      spriteFont = cm.Load<SpriteFont>("UI\\mainFont");
+
     }
-    
+
     public abstract void LoadContent();
     public abstract void Draw(GameTime gameTime);
     public abstract void Update(GameTime gameTime);

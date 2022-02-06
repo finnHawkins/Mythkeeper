@@ -46,6 +46,8 @@ namespace Mythkeeper {
     /// </summary>
     public Color fontColour;
 
+    protected Boolean selected;
+
     /// <summary>
     /// Creates a generic UI object.
     /// </summary>
@@ -86,6 +88,10 @@ namespace Mythkeeper {
     /// Draws the UI element to the screen.
     /// </summary>
     public abstract void Draw(SpriteBatch spriteBatch);
+
+    public void toggleSelect() {
+      selected = !selected;
+    }
 
   }
 }

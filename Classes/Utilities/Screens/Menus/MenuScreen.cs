@@ -7,7 +7,7 @@ using System.Text;
 namespace Mythkeeper {
   public abstract class MenuScreen : Screen {
 
-    protected List<UIButton> menuButtons;
+    protected List<UIObject> menuObjects;
     protected int selectedButtonIndex;
 
     public MenuScreen(string bgImg, GraphicsDevice gd, ContentManager cm, GameManager gm) : base(bgImg, gd, cm, gm) {

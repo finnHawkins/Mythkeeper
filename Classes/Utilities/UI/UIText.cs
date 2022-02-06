@@ -7,6 +7,9 @@ using System.Text;
 namespace Mythkeeper {
   public class UIText : UIObject {
 
+    Color selectedColour;
+    Boolean centreText;
+
     /// <summary>
     /// Constructor for UI text element.
     /// </summary>
@@ -15,8 +18,10 @@ namespace Mythkeeper {
     /// <param name="x">X coordinate of element.</param>
     /// <param name="y">Y coordinate of element.</param>
     /// <param name="fontColour">Text colour.</param>
-    public UIText(String UItag, String val, int x, int y, Color fontColour) : base(UItag, val, x, y, fontColour) {
-
+    public UIText(String UItag, String val, int x, int y, Color fontColour, bool centreText) : base(UItag, val, x, y, fontColour) {
+      this.selectedColour = Color.SkyBlue;
+      this.centreText = centreText;
+      this.selected = false;
     }
 
     /// <summary>
@@ -25,7 +30,7 @@ namespace Mythkeeper {
     /// <param name="sf">Spritefont to be used for drawing text.</param>
     public override void LoadContent(SpriteFont sf) {
 
-      font = sf;
+      Console.WriteLine(UItag + ": wrong LoadContent call, dickhead");
 
     }
 
@@ -35,7 +40,13 @@ namespace Mythkeeper {
     /// <param name="sf">Spritefont to be used for drawing text.</param>
     /// <param name="gd">Graphics device to allow creation of a new spritebatch.</param>
     public override void LoadContent(SpriteFont sf, GraphicsDevice gd) {
-      Console.WriteLine(UItag + ": wrong LoadContent call, dickhead");
+
+      font = sf;
+
+      if (centreText) {
+        Vector2 fontVector = font.MeasureString(value);
+        x = (gd.Viewport.Width / 2) - (fontVector.X / 2);
+      }
     }
 
     /// <summary>
@@ -45,7 +56,13 @@ namespace Mythkeeper {
 
       spriteBatch.Begin();
       Vector2 position = new Vector2(x, y);
-      spriteBatch.DrawString(font, value, position, fontColour, 0, new Vector2(0,0), 1.0f, SpriteEffects.None, 0.5f);
+
+      if (selected) {
+        spriteBatch.DrawString(font, value, position, selectedColour, 0, new Vector2(0, 0), 1.0f, SpriteEffects.None, 0.5f);
+      } else {
+        spriteBatch.DrawString(font, value, position, fontColour, 0, new Vector2(0, 0), 1.0f, SpriteEffects.None, 0.5f);
+      }
+
       spriteBatch.End();
 
     }

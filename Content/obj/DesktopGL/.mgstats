@@ -1,11 +1,11 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"C:/Users/finn/OneDrive/Mythkeeper/Content/playerSheetCropped.png","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/playerSheetCropped.xnb","TextureProcessor","Texture2DContent",66806,828885,0.0781646
-"C:/Users/finn/OneDrive/Mythkeeper/Content/rooms/castledoors.jpg","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/rooms/castledoors.xnb","TextureProcessor","Texture2DContent",455859,3240021,0.0520698
-"C:/Users/finn/OneDrive/Mythkeeper/Content/rooms/castleWall.jpg","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/rooms/castleWall.xnb","TextureProcessor","Texture2DContent",251530,3000085,0.0457534
-"C:/Users/finn/OneDrive/Mythkeeper/Content/rooms/mansion.jpg","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/rooms/entrance.xnb","TextureProcessor","Texture2DContent",189619,5760085,0.0888024
-"C:/Users/finn/OneDrive/Mythkeeper/Content/rooms/splashscreen.jpg","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/rooms/splashscreen.xnb","TextureProcessor","Texture2DContent",95111,1705685,0.0280727
-"C:/Users/finn/OneDrive/Mythkeeper/Content/UI/btn.png","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/UI/btn.xnb","TextureProcessor","Texture2DContent",166,2425,0.0008395
-"C:/Users/finn/OneDrive/Mythkeeper/Content/UI/btnPressed.png","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/UI/btnPressed.xnb","TextureProcessor","Texture2DContent",278,2965,0.0007563
-"C:/Users/finn/OneDrive/Mythkeeper/Content/UI/essence.png","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/UI/essence.xnb","TextureProcessor","Texture2DContent",10455,625885,0.0124645
-"C:/Users/finn/OneDrive/Mythkeeper/Content/UI/mainFont.spritefont","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/UI/mainFont.xnb","FontDescriptionProcessor","SpriteFontContent",2076,267298,0.1230471
-"C:/Users/finn/OneDrive/Mythkeeper/Content/UI/obol.png","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/UI/obol.xnb","TextureProcessor","Texture2DContent",150959,409685,0.007152
+"C:/Users/finn/OneDrive/Mythkeeper/Content/playerSheetCropped.png","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/playerSheetCropped.xnb","TextureProcessor","Texture2DContent",66806,828885,0.2011665
+"C:/Users/finn/OneDrive/Mythkeeper/Content/rooms/castledoors.jpg","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/rooms/castledoors.xnb","TextureProcessor","Texture2DContent",455859,3240021,0.0569146
+"C:/Users/finn/OneDrive/Mythkeeper/Content/rooms/castleWall.jpg","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/rooms/castleWall.xnb","TextureProcessor","Texture2DContent",251530,3000085,0.0556765
+"C:/Users/finn/OneDrive/Mythkeeper/Content/rooms/mansion.jpg","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/rooms/entrance.xnb","TextureProcessor","Texture2DContent",189619,5760085,0.0970662
+"C:/Users/finn/OneDrive/Mythkeeper/Content/rooms/splashscreen.jpg","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/rooms/splashscreen.xnb","TextureProcessor","Texture2DContent",95111,1705685,0.042041
+"C:/Users/finn/OneDrive/Mythkeeper/Content/UI/btn.png","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/UI/btn.xnb","TextureProcessor","Texture2DContent",166,2425,0.0041091
+"C:/Users/finn/OneDrive/Mythkeeper/Content/UI/btnPressed.png","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/UI/btnPressed.xnb","TextureProcessor","Texture2DContent",278,2965,0.0038864
+"C:/Users/finn/OneDrive/Mythkeeper/Content/UI/essence.png","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/UI/essence.xnb","TextureProcessor","Texture2DContent",10455,625885,0.0211965
+"C:/Users/finn/OneDrive/Mythkeeper/Content/UI/mainFont.spritefont","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/UI/mainFont.xnb","FontDescriptionProcessor","SpriteFontContent",2067,37922,0.0980927
+"C:/Users/finn/OneDrive/Mythkeeper/Content/UI/obol.png","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/UI/obol.xnb","TextureProcessor","Texture2DContent",150959,409685,0.0089662

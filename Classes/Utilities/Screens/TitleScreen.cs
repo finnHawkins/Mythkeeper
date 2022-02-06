@@ -16,7 +16,7 @@ namespace Mythkeeper {
       int sbHeight = 25;
       int sbY = (int)((int)gd.Viewport.Height - (sbHeight * 2));
 
-      knockText = new UIText("knockTag", "Press Space to knock", 0, sbY, Color.Honeydew);
+      knockText = new UIText("knockTag", "Press Space to knock", 0, sbY, Color.Honeydew, true);
       timer = 0;
 
     }
@@ -34,17 +34,11 @@ namespace Mythkeeper {
 
     public override void LoadContent() {
 
-      spriteFont = content.Load<SpriteFont>("mainFont");
-
       spriteBatch = new SpriteBatch(graphicsDevice);
       background = content.Load<Texture2D>(bgImg);
       mainScreen = new Rectangle(0, 0, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height);
 
-
-      Vector2 fontVector = spriteFont.MeasureString(knockText.value);
-      knockText.x = (graphicsDevice.Viewport.Width / 2) - (fontVector.X / 2);
-
-      knockText.LoadContent(spriteFont);
+      knockText.LoadContent(spriteFont, graphicsDevice);
     }
 
     public override void Update(GameTime gameTime) {

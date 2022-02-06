@@ -95,7 +95,7 @@ namespace Mythkeeper {
       stamBar.LoadContent(spriteFont, graphicDevice);
 
       spriteBatch = new SpriteBatch(graphicDevice);
-      spriteFont = content.Load<SpriteFont>("mainFont");
+      spriteFont = content.Load<SpriteFont>("UI\\mainFont");
 
       var spriteSheet = content.Load<SpriteSheet>("playersheet.sf", new JsonContentLoader());
       pSprite = new AnimatedSprite(spriteSheet);

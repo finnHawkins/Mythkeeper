@@ -13,12 +13,12 @@ namespace Mythkeeper {
 
     public CreditScreen(string bgImg, GraphicsDevice gd, ContentManager cm, GameManager gm) : base(bgImg, gd, cm, gm) {
 
-      string credits = "Programming: Finnski\n";
-      credits += "Assets: *insert here*\n";
-      credits += "Music: *insert here*\n";
-      credits += "SFX: *insert here*\n";
+      string credits = "Programming: aGayFinn\n";
+      credits += "Assets: insert here\n";
+      credits += "Music: insert here\n";
+      credits += "SFX: insert here\n";
 
-      creditText = new UIText("creditText", credits, gd.Viewport.Width, gd.Viewport.Height, Color.Honeydew);
+      creditText = new UIText("creditText", credits, gd.Viewport.Width, gd.Viewport.Height, Color.Honeydew, true);
 
       timer = INPUT_DELAY;
     }
@@ -35,17 +35,14 @@ namespace Mythkeeper {
 
     public override void LoadContent() {
 
-      spriteFont = content.Load<SpriteFont>("mainFont");
-
       spriteBatch = new SpriteBatch(graphicsDevice);
       background = content.Load<Texture2D>(bgImg);
       mainScreen = new Rectangle(0, 0, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height);
 
       Vector2 fontVector = spriteFont.MeasureString(creditText.value);
-      creditText.x = (graphicsDevice.Viewport.Width / 2) - (fontVector.X / 2);
       creditText.y = (graphicsDevice.Viewport.Height / 2) - (fontVector.Y / 2);
 
-      creditText.LoadContent(spriteFont);
+      creditText.LoadContent(spriteFont, graphicsDevice);
 
     }
 

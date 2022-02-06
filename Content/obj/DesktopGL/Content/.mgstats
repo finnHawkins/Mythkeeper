@@ -7,5 +7,5 @@ Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Siz
 "C:/Users/finn/OneDrive/Mythkeeper/Content/UI/btn.png","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/Content/UI/btn.xnb","TextureProcessor","Texture2DContent",166,2425,0.0695839
 "C:/Users/finn/OneDrive/Mythkeeper/Content/UI/btnPressed.png","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/Content/UI/btnPressed.xnb","TextureProcessor","Texture2DContent",278,2965,0.0008423
 "C:/Users/finn/OneDrive/Mythkeeper/Content/UI/essence.png","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/Content/UI/essence.xnb","TextureProcessor","Texture2DContent",10455,625885,0.0151472
-"C:/Users/finn/OneDrive/Mythkeeper/Content/UI/mainFont.spritefont","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/Content/UI/mainFont.xnb","FontDescriptionProcessor","SpriteFontContent",2076,267298,0.1228837
+"C:/Users/finn/OneDrive/Mythkeeper/Content/UI/mainFont.spritefont","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/Content/UI/mainFont.xnb","FontDescriptionProcessor","SpriteFontContent",2067,37922,0.1135168
 "C:/Users/finn/OneDrive/Mythkeeper/Content/UI/obol.png","C:/Users/finn/OneDrive/Mythkeeper/Content/bin/DesktopGL/Content/UI/obol.xnb","TextureProcessor","Texture2DContent",150959,409685,0.0070081

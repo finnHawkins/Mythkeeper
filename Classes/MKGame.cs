@@ -30,9 +30,6 @@ namespace Mythkeeper {
 
       mkGM = new GameManager(GraphicsDevice, content, this);
 
-      //gdm.PreferredBackBufferWidth = GraphicsDevice.DisplayMode.Width;
-      //gdm.PreferredBackBufferHeight = GraphicsDevice.DisplayMode.Height;
-      //gdm.IsFullScreen = true;
       gdm.ApplyChanges();
 
       //Initialise new objects BEFORE this line
@@ -81,7 +78,24 @@ namespace Mythkeeper {
     }
 
     public void endGame() {
+      Console.WriteLine("Shutting down...");
       this.Exit();
+    }
+
+    public void toggleFullScreen() {
+
+      if (gdm.IsFullScreen) {
+        gdm.PreferredBackBufferWidth = 800;
+        gdm.PreferredBackBufferHeight = 480;
+        gdm.IsFullScreen = false;
+      } else {
+        gdm.PreferredBackBufferWidth = GraphicsDevice.DisplayMode.Width;
+        gdm.PreferredBackBufferHeight = GraphicsDevice.DisplayMode.Height;
+        gdm.IsFullScreen = true;
+      }
+
+      gdm.ApplyChanges();
+
     }
 
   }

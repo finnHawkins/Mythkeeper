@@ -10,7 +10,7 @@ namespace Mythkeeper {
   public class MainMenu : MenuScreen {
     public MainMenu(string bgImg, GraphicsDevice gd, ContentManager cm, GameManager gm) : base(bgImg, gd, cm, gm) {
 
-      menuButtons = new List<UIButton> {
+      menuObjects = new List<UIObject> {
         new UIButton("continueBtn", "Continue", 30, 25, Color.White, cm),
         new UIButton("newGameBtn", "New Game", 30, 100, Color.White, cm),
         new UIButton("loadGameBtn", "Load Game", 30, 175, Color.White, cm),
@@ -20,7 +20,7 @@ namespace Mythkeeper {
 
       };
 
-      foreach (UIButton button in menuButtons) {
+      foreach (UIButton button in menuObjects) {
         button.ButtonClicked += buttonClickHandler;
       }
 
@@ -34,22 +34,20 @@ namespace Mythkeeper {
       spriteBatch.Draw(background, mainScreen, Color.White);
       spriteBatch.End();
 
-      foreach (UIButton button in menuButtons) {
+      foreach (UIButton button in menuObjects) {
         button.Draw(spriteBatch);
       }
     }
 
     public override void LoadContent() {
 
-      spriteFont = content.Load<SpriteFont>("mainFont");
-
       spriteBatch = new SpriteBatch(graphicsDevice);
       background = content.Load<Texture2D>(bgImg);
       mainScreen = new Rectangle(0, 0, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height);
 
-      menuButtons[0].toggleSelect();
+      menuObjects[0].toggleSelect();
 
-      foreach (UIButton button in menuButtons) {
+      foreach (UIButton button in menuObjects) {
         button.LoadContent(spriteFont);
       }
     }
@@ -59,7 +57,7 @@ namespace Mythkeeper {
       KeyboardState kbState = Keyboard.GetState();
       if(timer == 0) {
 
-        foreach (UIButton button in menuButtons) {
+        foreach (UIButton button in menuObjects) {
           button.Update();
         }
 
@@ -67,7 +65,7 @@ namespace Mythkeeper {
         int indexModifier = 0;
         bool changeIndex = false;
         if(kbState.IsKeyDown(Keys.S) || kbState.IsKeyDown(Keys.Down) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.LeftThumbstickDown) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadDown)) {
-          if (selectedButtonIndex < menuButtons.Count -1) {
+          if (selectedButtonIndex < menuObjects.Count -1) {
             indexModifier = 1;
             changeIndex = true;
           }
@@ -79,9 +77,11 @@ namespace Mythkeeper {
         }
 
         if (changeIndex) {
-          menuButtons[selectedButtonIndex].toggleSelect();
+
+          menuObjects[selectedButtonIndex].toggleSelect();
           selectedButtonIndex += indexModifier;
-          menuButtons[selectedButtonIndex].toggleSelect();
+          menuObjects[selectedButtonIndex].toggleSelect();
+
           this.timer = INPUT_DELAY;
         }
 
@@ -97,6 +97,7 @@ namespace Mythkeeper {
     }
 
     public void buttonClickHandler(object sender, EventArgs e) {
+
       UIObject btn = sender as UIObject;
 
       switch (btn.UItag) {
